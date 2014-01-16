@@ -12,9 +12,8 @@
 #include <string>
 #include <vector>
 
-typedef int64_t   int64;
-typedef uint64_t  uint64;
-
+typedef long long int64;
+typedef unsigned long long  uint64;
 
 inline int Testuint256AdHoc(std::vector<std::string> vArg);
 
