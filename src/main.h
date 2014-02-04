@@ -196,13 +196,7 @@ bool AbortNode(const std::string &msg);
 
 
 
-
-
-
-
-
-
-
+double GetQuickDifficulty(const unsigned int nBits);
 
 bool GetWalletFile(CWallet* pwallet, std::string &strWalletFileOut);
 
