@@ -1087,12 +1087,11 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
     return nSubsidy + nFees;
 }
 
-static const int64 difficulty_decrease_max = 400;
-static const int64 difficulty_increase_max = 25;
-
 static const int64 nTargetTimespan = 10 * 60; // Neutrinocoin: 10 minutes
 static const int64 nTargetSpacing = 0.5 * 60; // Neutrinocoin: 0.5 minutes
 static const int64 nInterval = nTargetTimespan / nTargetSpacing;
+static const int64 nMaxDifficultyIncrease = 10;
+static const int64 nMaxDifficultyDecrease = 50;
 
 //
 // minimum amount of work that could possibly be required nTime after
@@ -1109,10 +1108,10 @@ unsigned int ComputeMinWork(unsigned int nBase, int64 nTime)
     bnResult.SetCompact(nBase);
     while (nTime > 0 && bnResult < bnProofOfWorkLimit)
     {
-        // Maximum 400% adjustment...
-        bnResult *= 4;
-        // ... in best-case exactly 4-times-normal target time
-        nTime -= nTargetTimespan*difficulty_decrease_max/100;
+        // Maximum 200% adjustment...
+        bnResult *= 2;
+        // ... per timespan
+        nTime -= nTargetTimespan;
     }
     if (bnResult > bnProofOfWorkLimit)
         bnResult = bnProofOfWorkLimit;
@@ -1165,10 +1164,14 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
     // Limit adjustment step
     int64 nActualTimespan = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
     printf("  nActualTimespan = %"PRI64d"  before bounds\n", nActualTimespan);
-    if (nActualTimespan < nTargetTimespan*difficulty_increase_max/100)
-        nActualTimespan = nTargetTimespan*difficulty_increase_max/100;
-    if (nActualTimespan > nTargetTimespan*difficulty_decrease_max/100)
-        nActualTimespan = nTargetTimespan*difficulty_decrease_max/100;
+
+    int64 minTime = nTargetTimespan * 100 / (100 + nMaxDifficultyIncrease); // limit the difficulty change to no more than 10% up
+    int64 maxTime = nTargetTimespan * 100 / (100 - nMaxDifficultyDecrease); // limit the difficulty change to no more than 50% down
+
+    if (nActualTimespan < minTime)
+        nActualTimespan = minTime;
+    if (nActualTimespan > maxTime)
+        nActualTimespan = maxTime;
 
     // Retarget
     CBigNum bnNew;
@@ -1182,10 +1185,30 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
     /// debug print
     printf("GetNextWorkRequired RETARGET\n");
     printf("nTargetTimespan = %"PRI64d"    nActualTimespan = %"PRI64d"\n", nTargetTimespan, nActualTimespan);
-    printf("Before: %08x  %s\n", pindexLast->nBits, CBigNum().SetCompact(pindexLast->nBits).getuint256().ToString().c_str());
-    printf("After:  %08x  %s\n", bnNew.GetCompact(), bnNew.getuint256().ToString().c_str());
+    printf("Before: %08x  %s %15f\n", pindexLast->nBits, CBigNum().SetCompact(pindexLast->nBits).getuint256().ToString().c_str(), GetQuickDifficulty(pindexLast->nBits));
+    printf("After:  %08x  %s %15f\n\n", bnNew.GetCompact(), bnNew.getuint256().ToString().c_str(), GetQuickDifficulty(bnNew.GetCompact()));
 
     return bnNew.GetCompact();
+}
+
+double GetQuickDifficulty(const unsigned int nBits)
+{
+    int nShift = (nBits >> 24) & 0xff;
+
+    double dDiff = (double) 0x0000ffff / (double)(nBits & 0x00ffffff);
+
+    while (nShift < 29)
+    {
+        dDiff *= 256.0;
+        nShift++;
+    }
+    while (nShift > 29)
+    {
+        dDiff /= 256.0;
+        nShift--;
+    }
+
+    return dDiff;
 }
 
 bool CheckProofOfWork(uint256 hash, unsigned int nBits)
