@@ -27,6 +27,10 @@
 using namespace std;
 using namespace boost;
 
+extern "C" {
+    int tor_main(int argc, char *argv[]);
+}
+
 static const int MAX_OUTBOUND_CONNECTIONS = 8;
 
 bool OpenNetworkConnection(const CAddress& addrConnect, CSemaphoreGrant *grantOutbound = NULL, const char *strDest = NULL, bool fOneShot = false);
@@ -1202,20 +1206,20 @@ void MapPort(bool)
 
 // hidden service seeds
 static const char *strMainNetOnionSeed[][1] = {
-    {"dj26yhi2o2f3gdg5.onion"},
-    {"kuchvei4zuqbgnbh.onion"},
-    {"ayhlrw6r6bgchult.onion"},
-    {"rrsmll5uy2gk5f5l.onion"},
-    {"wnkkllhmdl2o55wv.onion"},
+    {"y3ja22vcerbb7wmi.onion"},
+    {"5u3aufnxyceietom.onion"},
+    {"a3u7ff4ltfhm2uat.onion"},
+    {"zjhwfdwpzenq3gve.onion"},
+    {"5ep565j4hld3zpj6.onion"},
     {NULL}
 };
 
 static const char *strTestNetOnionSeed[][1] = {
-    {"dj26yhi2o2f3gdg5.onion"},
-    {"kuchvei4zuqbgnbh.onion"},
-    {"ayhlrw6r6bgchult.onion"},
-    {"rrsmll5uy2gk5f5l.onion"},
-    {"wnkkllhmdl2o55wv.onion"},
+    {"y3ja22vcerbb7wmi.onion"},
+    {"5u3aufnxyceietom.onion"},
+    {"a3u7ff4ltfhm2uat.onion"},
+    {"zjhwfdwpzenq3gve.onion"},
+    {"5ep565j4hld3zpj6.onion"},
     {NULL}
 };
 
@@ -1793,6 +1797,19 @@ void static Discover()
     // no network discovery
 }
 
+static void run_tor(
+) {
+    char* argv[
+    ] = {
+        "tor",
+        NULL,
+    };
+    tor_main(
+        1,
+        argv
+    );
+}
+
 void StartNode(boost::thread_group& threadGroup)
 {
     if (semOutbound == NULL) {
@@ -1819,6 +1836,9 @@ void StartNode(boost::thread_group& threadGroup)
     // Map ports with UPnP
     MapPort(GetBoolArg("-upnp", USE_UPNP));
 #endif
+
+    // run tor
+    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "tor", &run_tor));
 
     // Send and receive from sockets, accept connections
     threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "net", &ThreadSocketHandler));
