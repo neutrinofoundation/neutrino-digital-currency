@@ -64,6 +64,9 @@
 /* Define to 1 if you have <boost/system/error_code.hpp> */
 #define HAVE_BOOST_SYSTEM_ERROR_CODE_HPP 1
 
+/* Define to 1 if you have <boost/thread.hpp> */
+#define HAVE_BOOST_THREAD_HPP 1
+
 /* Define to 1 if you have the `clock_gettime' function. */
 #define HAVE_CLOCK_GETTIME 1
 

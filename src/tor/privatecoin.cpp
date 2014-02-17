@@ -7,6 +7,7 @@
 
 #include <boost/filesystem.hpp>
 #include <boost/thread/thread.hpp>
+#include <boost/thread/mutex.hpp>
 #include <string>
 #include <cstring>
 
@@ -65,4 +66,22 @@ int check_interrupted(
 ) {
     return boost::this_thread::interruption_requested(
     ) ? 1 : 0;
+}
+
+static boost::mutex initializing;
+
+static std::auto_ptr<boost::unique_lock<boost::mutex> > uninitialized(
+    new boost::unique_lock<boost::mutex>(
+        initializing
+    )
+);
+
+void set_initialized(
+) {
+    uninitialized.reset();
+}
+
+void wait_initialized(
+) {
+    boost::unique_lock<boost::mutex> checking(initializing);
 }

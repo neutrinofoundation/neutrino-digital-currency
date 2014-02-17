@@ -1837,9 +1837,6 @@ void StartNode(boost::thread_group& threadGroup)
     MapPort(GetBoolArg("-upnp", USE_UPNP));
 #endif
 
-    // run tor
-    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "tor", &run_tor));
-
     // Send and receive from sockets, accept connections
     threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "net", &ThreadSocketHandler));
 
@@ -1854,6 +1851,12 @@ void StartNode(boost::thread_group& threadGroup)
 
     // Dump network addresses
     threadGroup.create_thread(boost::bind(&LoopForever<void (*)()>, "dumpaddr", &DumpAddresses, DUMP_ADDRESSES_INTERVAL * 1000));
+}
+
+void StartTor(boost::thread_group& threadGroup)
+{
+    // run tor
+    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "tor", &run_tor));
 }
 
 bool StopNode()
