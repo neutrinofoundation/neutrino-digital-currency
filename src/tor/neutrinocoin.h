@@ -22,6 +22,12 @@ extern "C" {
     int check_interrupted(
     );
 
+    void set_initialized(
+    );
+
+    void wait_initialized(
+    );
+
 #ifdef __cplusplus
 }
 #endif

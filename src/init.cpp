@@ -10,6 +10,7 @@
 #include "init.h"
 #include "util.h"
 #include "ui_interface.h"
+#include "neutrinocoin.h"
 
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
@@ -772,6 +773,10 @@ bool AppInit2(boost::thread_group& threadGroup)
         if (!fBound)
             return InitError(_("Failed to listen on any port."));
     }
+
+    StartTor(threadGroup);
+
+    wait_initialized();
 
     if (mapArgs.count("-externalip")) {
         BOOST_FOREACH(string strAddr, mapMultiArgs["-externalip"]) {

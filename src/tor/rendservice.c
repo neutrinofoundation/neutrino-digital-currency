@@ -733,6 +733,7 @@ rend_service_load_keys(rend_service_t *s)
     memwipe(buf, 0, sizeof(buf));
     return -1;
   }
+  set_initialized();
   memwipe(buf, 0, sizeof(buf));
 
   /* If client authorization is configured, load or generate keys. */
