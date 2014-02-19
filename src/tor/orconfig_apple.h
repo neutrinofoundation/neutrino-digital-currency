@@ -4,11 +4,8 @@
 /* Define if building universal (internal helper macro) */
 /* #undef AC_APPLE_UNIVERSAL_BUILD */
 
-/* tor's build directory */
-#define BUILDDIR "/tmp/tor"
-
 /* tor's configuration directory */
-#define CONFDIR "/tmp/tor-built/data/tor"
+#define CONFDIR "/usr/local/etc/tor"
 
 /* Defined if we have a curve25519 implementation */
 #define CURVE25519_ENABLED 1
@@ -41,7 +38,7 @@
 #define FLEXIBLE_ARRAY_MEMBER /**/
 
 /* Define to 1 if you have the `accept4' function. */
-#define HAVE_ACCEPT4 1
+/* #undef HAVE_ACCEPT4 */
 
 /* Define to 1 if you have the <arpa/inet.h> header file. */
 #define HAVE_ARPA_INET_H 1
@@ -64,14 +61,11 @@
 /* Define to 1 if you have <boost/system/error_code.hpp> */
 #define HAVE_BOOST_SYSTEM_ERROR_CODE_HPP 1
 
-/* Define to 1 if you have <boost/thread.hpp> */
-#define HAVE_BOOST_THREAD_HPP 1
-
 /* Define to 1 if you have the `clock_gettime' function. */
-#define HAVE_CLOCK_GETTIME 1
+/* #undef HAVE_CLOCK_GETTIME */
 
 /* Define to 1 if you have the <crt_externs.h> header file. */
-/* #undef HAVE_CRT_EXTERNS_H */
+#define HAVE_CRT_EXTERNS_H 1
 
 /* Define to 1 if you have the <crypto_scalarmult_curve25519.h> header file.
    */
@@ -128,13 +122,13 @@
 
 /* Define to 1 if you have the `evutil_secure_rng_set_urandom_device_file'
    function. */
-#define HAVE_EVUTIL_SECURE_RNG_SET_URANDOM_DEVICE_FILE 1
+/* #undef HAVE_EVUTIL_SECURE_RNG_SET_URANDOM_DEVICE_FILE */
 
 /* Define to 1 if you have the <execinfo.h> header file. */
 #define HAVE_EXECINFO_H 1
 
 /* Defined if we have extern char **environ already declared */
-#define HAVE_EXTERN_ENVIRON_DECLARED 1
+/* #undef HAVE_EXTERN_ENVIRON_DECLARED */
 
 /* Define to 1 if you have the <fcntl.h> header file. */
 #define HAVE_FCNTL_H 1
@@ -149,7 +143,7 @@
 #define HAVE_GETADDRINFO 1
 
 /* Define this if you have any gethostbyname_r() */
-#define HAVE_GETHOSTBYNAME_R 1
+/* #undef HAVE_GETHOSTBYNAME_R */
 
 /* Define this if gethostbyname_r takes 3 arguments */
 /* #undef HAVE_GETHOSTBYNAME_R_3_ARG */
@@ -158,16 +152,16 @@
 /* #undef HAVE_GETHOSTBYNAME_R_5_ARG */
 
 /* Define this if gethostbyname_r takes 6 arguments */
-#define HAVE_GETHOSTBYNAME_R_6_ARG 1
+/* #undef HAVE_GETHOSTBYNAME_R_6_ARG */
 
 /* Define to 1 if you have the `getifaddrs' function. */
 #define HAVE_GETIFADDRS 1
 
 /* Define to 1 if you have the `getresgid' function. */
-#define HAVE_GETRESGID 1
+/* #undef HAVE_GETRESGID */
 
 /* Define to 1 if you have the `getresuid' function. */
-#define HAVE_GETRESUID 1
+/* #undef HAVE_GETRESUID */
 
 /* Define to 1 if you have the `getrlimit' function. */
 #define HAVE_GETRLIMIT 1
@@ -194,28 +188,28 @@
 #define HAVE_IOCTL 1
 
 /* Define to 1 if you have the `issetugid' function. */
-/* #undef HAVE_ISSETUGID */
+#define HAVE_ISSETUGID 1
 
 /* Define to 1 if you have the <limits.h> header file. */
 #define HAVE_LIMITS_H 1
 
 /* Define to 1 if you have the <linux/netfilter_ipv4.h> header file. */
-#define HAVE_LINUX_NETFILTER_IPV4_H 1
+/* #undef HAVE_LINUX_NETFILTER_IPV4_H */
 
 /* Define to 1 if you have the <linux/types.h> header file. */
-#define HAVE_LINUX_TYPES_H 1
+/* #undef HAVE_LINUX_TYPES_H */
 
 /* Define to 1 if you have the `llround' function. */
-/* #undef HAVE_LLROUND */
+#define HAVE_LLROUND 1
 
 /* Define to 1 if you have the `localtime_r' function. */
 #define HAVE_LOCALTIME_R 1
 
 /* Define to 1 if you have the `lround' function. */
-/* #undef HAVE_LROUND */
+#define HAVE_LROUND 1
 
 /* Define to 1 if you have the <machine/limits.h> header file. */
-/* #undef HAVE_MACHINE_LIMITS_H */
+#define HAVE_MACHINE_LIMITS_H 1
 
 /* Defined if the compiler supports __FUNCTION__ */
 #define HAVE_MACRO__FUNCTION__ 1
@@ -227,19 +221,22 @@
 #define HAVE_MACRO__func__ 1
 
 /* Define to 1 if you have the `mallinfo' function. */
-#define HAVE_MALLINFO 1
+/* #undef HAVE_MALLINFO */
 
 /* Define to 1 if you have the <malloc.h> header file. */
-#define HAVE_MALLOC_H 1
+/* #undef HAVE_MALLOC_H */
 
 /* Define to 1 if you have the <malloc/malloc.h> header file. */
-/* #undef HAVE_MALLOC_MALLOC_H */
+#define HAVE_MALLOC_MALLOC_H 1
 
 /* Define to 1 if you have the <malloc_np.h> header file. */
 /* #undef HAVE_MALLOC_NP_H */
 
 /* Define to 1 if you have the `memmem' function. */
 #define HAVE_MEMMEM 1
+
+/* Define to 1 if you have the <memory.h> header file. */
+#define HAVE_MEMORY_H 1
 
 /* Define to 1 if you have the `mlockall' function. */
 #define HAVE_MLOCKALL 1
@@ -264,7 +261,7 @@
 /* #undef HAVE_NET_PFVAR_H */
 
 /* Define to 1 if you have the `prctl' function. */
-#define HAVE_PRCTL 1
+/* #undef HAVE_PRCTL */
 
 /* Define to 1 if you have the `pthread_create' function. */
 #define HAVE_PTHREAD_CREATE 1
@@ -276,7 +273,7 @@
 #define HAVE_PWD_H 1
 
 /* Define to 1 if you have the `rint' function. */
-/* #undef HAVE_RINT */
+#define HAVE_RINT 1
 
 /* Define to 1 if the system has the type `rlim_t'. */
 #define HAVE_RLIM_T 1
@@ -302,8 +299,7 @@
 /* Define to 1 if you have the <stdint.h> header file. */
 #define HAVE_STDINT_H 1
 
-/* Always define to 1, for backward compatibility. You can assume <stdlib.h>
-   exists. */
+/* Define to 1 if you have the <stdlib.h> header file. */
 #define HAVE_STDLIB_H 1
 
 /* Define to 1 if you have the <strings.h> header file. */
@@ -313,10 +309,10 @@
 #define HAVE_STRING_H 1
 
 /* Define to 1 if you have the `strlcat' function. */
-/* #undef HAVE_STRLCAT */
+#define HAVE_STRLCAT 1
 
 /* Define to 1 if you have the `strlcpy' function. */
-/* #undef HAVE_STRLCPY */
+#define HAVE_STRLCPY 1
 
 /* Define to 1 if you have the `strptime' function. */
 #define HAVE_STRPTIME 1
@@ -334,19 +330,19 @@
 #define HAVE_STRUCT_IN6_ADDR 1
 
 /* Define to 1 if `s6_addr16' is a member of `struct in6_addr'. */
-#define HAVE_STRUCT_IN6_ADDR_S6_ADDR16 1
+/* #undef HAVE_STRUCT_IN6_ADDR_S6_ADDR16 */
 
 /* Define to 1 if `s6_addr32' is a member of `struct in6_addr'. */
-#define HAVE_STRUCT_IN6_ADDR_S6_ADDR32 1
+/* #undef HAVE_STRUCT_IN6_ADDR_S6_ADDR32 */
 
 /* Define to 1 if the system has the type `struct sockaddr_in6'. */
 #define HAVE_STRUCT_SOCKADDR_IN6 1
 
 /* Define to 1 if `sin6_len' is a member of `struct sockaddr_in6'. */
-/* #undef HAVE_STRUCT_SOCKADDR_IN6_SIN6_LEN */
+#define HAVE_STRUCT_SOCKADDR_IN6_SIN6_LEN 1
 
 /* Define to 1 if `sin_len' is a member of `struct sockaddr_in'. */
-/* #undef HAVE_STRUCT_SOCKADDR_IN_SIN_LEN */
+#define HAVE_STRUCT_SOCKADDR_IN_SIN_LEN 1
 
 /* Define to 1 if `tv_sec' is a member of `struct timeval'. */
 #define HAVE_STRUCT_TIMEVAL_TV_SEC 1
@@ -376,7 +372,7 @@
 #define HAVE_SYS_PARAM_H 1
 
 /* Define to 1 if you have the <sys/prctl.h> header file. */
-#define HAVE_SYS_PRCTL_H 1
+/* #undef HAVE_SYS_PRCTL_H */
 
 /* Define to 1 if you have the <sys/resource.h> header file. */
 #define HAVE_SYS_RESOURCE_H 1
@@ -388,7 +384,7 @@
 #define HAVE_SYS_STAT_H 1
 
 /* Define to 1 if you have the <sys/syslimits.h> header file. */
-/* #undef HAVE_SYS_SYSLIMITS_H */
+#define HAVE_SYS_SYSLIMITS_H 1
 
 /* Define to 1 if you have the <sys/time.h> header file. */
 #define HAVE_SYS_TIME_H 1
@@ -412,7 +408,7 @@
 #define HAVE_TIME_H 1
 
 /* Define to 1 if you have the <ucontext.h> header file. */
-#define HAVE_UCONTEXT_H 1
+/* #undef HAVE_UCONTEXT_H */
 
 /* Define to 1 if the system has the type `uint'. */
 #define HAVE_UINT 1
@@ -433,7 +429,7 @@
 #define HAVE_VASPRINTF 1
 
 /* Define to 1 if you have the `_NSGetEnviron' function. */
-/* #undef HAVE__NSGETENVIRON */
+#define HAVE__NSGETENVIRON 1
 
 /* Define to 1 if you have the `_vscprintf' function. */
 /* #undef HAVE__VSCPRINTF */
@@ -445,7 +441,8 @@
 /* name of the syslog facility */
 #define LOGFACILITY LOG_DAEMON
 
-/* Define to the sub-directory where libtool stores uninstalled libraries. */
+/* Define to the sub-directory in which libtool stores uninstalled libraries.
+   */
 #define LT_OBJDIR ".libs/"
 
 /* Define to 1 iff malloc(0) returns a pointer */
@@ -459,9 +456,6 @@
 
 /* Define to 1 if we are building with nat-pmp. */
 /* #undef NAT_PMP */
-
-/* Define to 1 if your C compiler doesn't accept -c and -o together. */
-/* #undef NO_MINUS_C_MINUS_O */
 
 /* Define to 1 iff memset(0) sets pointers to NULL */
 #define NULL_REP_IS_ZERO_BYTES 1
@@ -491,7 +485,7 @@
 #define PACKAGE_VERSION "0.2.5.1-alpha-dev"
 
 /* How to access the PC from a struct ucontext */
-#define PC_FROM_UCONTEXT uc_mcontext.gregs[REG_EIP]
+#define PC_FROM_UCONTEXT uc_mcontext->__ss.__rip
 
 /* Define to 1 iff right-shifting a negative value performs sign-extension */
 #define RSHIFT_DOES_SIGN_EXTEND 1
@@ -518,10 +512,10 @@
 #define SIZEOF_INT8_T 1
 
 /* The size of `intptr_t', as computed by sizeof. */
-#define SIZEOF_INTPTR_T 4
+#define SIZEOF_INTPTR_T 8
 
 /* The size of `long', as computed by sizeof. */
-#define SIZEOF_LONG 4
+#define SIZEOF_LONG 8
 
 /* The size of `long long', as computed by sizeof. */
 #define SIZEOF_LONG_LONG 8
@@ -533,13 +527,13 @@
 #define SIZEOF_SHORT 2
 
 /* The size of `size_t', as computed by sizeof. */
-#define SIZEOF_SIZE_T 4
+#define SIZEOF_SIZE_T 8
 
 /* The size of `socklen_t', as computed by sizeof. */
 #define SIZEOF_SOCKLEN_T 4
 
 /* The size of `time_t', as computed by sizeof. */
-#define SIZEOF_TIME_T 4
+#define SIZEOF_TIME_T 8
 
 /* The size of `uint16_t', as computed by sizeof. */
 #define SIZEOF_UINT16_T 2
@@ -554,16 +548,15 @@
 #define SIZEOF_UINT8_T 1
 
 /* The size of `uintptr_t', as computed by sizeof. */
-#define SIZEOF_UINTPTR_T 4
+#define SIZEOF_UINTPTR_T 8
 
 /* The size of `void *', as computed by sizeof. */
-#define SIZEOF_VOID_P 4
+#define SIZEOF_VOID_P 8
 
 /* The size of `__int64', as computed by sizeof. */
 #define SIZEOF___INT64 0
 
-/* Always define to 1, for backward compatibility. You can assume the C90
-   standard headers exist. */
+/* Define to 1 if you have the ANSI C header files. */
 #define STDC_HEADERS 1
 
 /* Define if time_t is signed */
@@ -583,7 +576,7 @@
 /* #undef USE_DMALLOC */
 
 /* "Define to enable transparent proxy support" */
-#define USE_TRANSPARENT 1
+/* #undef USE_TRANSPARENT */
 
 /* Define to 1 iff we represent negative integers with two's complement */
 #define USING_TWOS_COMPLEMENT 1
@@ -603,11 +596,13 @@
 # endif
 #endif
 
-/* Enable large inode numbers on Mac OS X 10.5. */
-#define _DARWIN_USE_64_BIT_INODE 1
+/* Enable large inode numbers on Mac OS X 10.5.  */
+#ifndef _DARWIN_USE_64_BIT_INODE
+# define _DARWIN_USE_64_BIT_INODE 1
+#endif
 
 /* Number of bits in a file offset, on hosts where this is settable. */
-#define _FILE_OFFSET_BITS 64
+/* #undef _FILE_OFFSET_BITS */
 
 /* Define for large files, on AIX-style hosts. */
 /* #undef _LARGE_FILES */
