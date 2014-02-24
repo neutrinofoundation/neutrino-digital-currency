@@ -19,11 +19,9 @@
 #include <boost/tuple/tuple_comparison.hpp>
 #include <boost/tuple/tuple_io.hpp>
 
+#include "uint256.h"
 #include "allocators.h"
 #include "version.h"
-
-typedef long long  int64;
-typedef unsigned long long  uint64;
 
 class CScript;
 class CDataStream;

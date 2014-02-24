@@ -79,7 +79,7 @@ extern CScript COINBASE_FLAGS;
 extern CCriticalSection cs_main;
 extern std::map<uint256, CBlockIndex*> mapBlockIndex;
 extern std::set<CBlockIndex*, CBlockIndexWorkComparator> setBlockIndexValid;
-extern uint256 hashGenesisBlock;
+extern uint256 const hashGenesisBlock;
 extern CBlockIndex* pindexGenesisBlock;
 extern int nBestHeight;
 extern uint256 nBestChainWork;

@@ -40,7 +40,6 @@ struct LocalServiceInfo {
 //
 // Global state variables
 //
-bool fDiscover = true;
 uint64 nLocalServices = NODE_NETWORK;
 static CCriticalSection cs_mapLocalHost;
 static map<CNetAddr, LocalServiceInfo> mapLocalHost;
@@ -96,9 +95,6 @@ void CNode::PushGetBlocks(CBlockIndex* pindexBegin, uint256 hashEnd)
 // find 'best' local address for a particular peer
 bool GetLocal(CService& addr, const CNetAddr *paddrPeer)
 {
-    if (fNoListen)
-        return false;
-
     int nBestScore = -1;
     int nBestReachability = -1;
     {
@@ -215,7 +211,7 @@ bool AddLocal(const CService& addr, int nScore)
     if (!addr.IsRoutable())
         return false;
 
-    if (!fDiscover && nScore < LOCAL_MANUAL)
+    if (nScore < LOCAL_MANUAL)
         return false;
 
     if (IsLimited(addr))
@@ -541,12 +537,24 @@ void CNode::PushVersion()
 {
     /// when NTP implemented, change to just nTime = GetAdjustedTime()
     int64 nTime = (fInbound ? GetAdjustedTime() : GetTime());
+    uint64 verification_token = 0;
+    if (
+        !fInbound
+    ) {
+        if (!addrman.GetReconnectToken(addr, verification_token)) {
+            RAND_bytes((unsigned char*)&verification_token, sizeof(verification_token));
+            addrman.SetVerificationToken(
+                addr,
+                verification_token
+            );
+        }
+    }
     CAddress addrYou = (addr.IsRoutable() && !IsProxy(addr) ? addr : CAddress(CService("0.0.0.0",0)));
     CAddress addrMe = GetLocalAddress(&addr);
     RAND_bytes((unsigned char*)&nLocalHostNonce, sizeof(nLocalHostNonce));
-    printf("send version message: version %d, blocks=%d, us=%s, them=%s, peer=%s\n", PROTOCOL_VERSION, nBestHeight, addrMe.ToString().c_str(), addrYou.ToString().c_str(), addr.ToString().c_str());
+    printf("send version message: version %d, blocks=%d, us=%s, them=%s, peer=%s, verification=%" PRI64d "\n", PROTOCOL_VERSION, nBestHeight, addrMe.ToString().c_str(), addrYou.ToString().c_str(), addr.ToString().c_str(), verification_token);
     PushMessage("version", PROTOCOL_VERSION, nLocalServices, nTime, addrYou, addrMe,
-                nLocalHostNonce, FormatSubVersion(CLIENT_NAME, CLIENT_VERSION, std::vector<string>()), nBestHeight);
+                verification_token, nLocalHostNonce, FormatSubVersion(CLIENT_NAME, CLIENT_VERSION, std::vector<string>()), nBestHeight);
 }
 
 
@@ -759,7 +767,7 @@ void ThreadSocketHandler()
         {
             LOCK(cs_vNodes);
             // Disconnect unused nodes
-            vector<CNode*> vNodesCopy = vNodes;
+            vector<CNode*> const vNodesCopy = vNodes;
             BOOST_FOREACH(CNode* pnode, vNodesCopy)
             {
                 if (pnode->fDisconnect ||
@@ -809,6 +817,32 @@ void ThreadSocketHandler()
                         delete pnode;
                     }
                 }
+            }
+
+            // count secured connections
+            int unsecured = 0;
+            int secured = 0;
+            vector<CNode*> vNodesUnsecure;
+            BOOST_FOREACH(CNode* pnode, vNodesCopy)
+            {
+                if (GetTime() - pnode->nTimeConnected < 60) {
+                    continue;
+                }
+                if (
+                    !pnode->fInbound || pnode->fVerified
+                ) {
+                    secured++;
+                } else {
+                    unsecured++;
+                    vNodesUnsecure.push_back(pnode);
+                }
+            }
+            if (
+                0 > 2 * secured - 3 * unsecured
+            ) {
+                random_shuffle(vNodesUnsecure.begin(), vNodesUnsecure.end(), GetRandInt);
+                printf("removing unsecured connection %s\n", (*vNodesUnsecure.begin())->addr.ToString().c_str());
+                (*vNodesUnsecure.begin())->fDisconnect = true;
             }
         }
         if (vNodes.size() != nPrevNodeCount)
@@ -940,11 +974,6 @@ void ThreadSocketHandler()
                     if (!setservAddNodeAddresses.count(addr))
                         closesocket(hSocket);
                 }
-            }
-            else if (CNode::IsBanned(addr))
-            {
-                printf("connection from %s dropped (banned)\n", addr.ToString().c_str());
-                closesocket(hSocket);
             }
             else
             {
@@ -1095,22 +1124,6 @@ void ThreadMapPort()
     r = UPNP_GetValidIGD(devlist, &urls, &data, lanaddr, sizeof(lanaddr));
     if (r == 1)
     {
-        if (fDiscover) {
-            char externalIPAddress[40];
-            r = UPNP_GetExternalIPAddress(urls.controlURL, data.first.servicetype, externalIPAddress);
-            if(r != UPNPCOMMAND_SUCCESS)
-                printf("UPnP: GetExternalIPAddress() returned %d\n", r);
-            else
-            {
-                if(externalIPAddress[0])
-                {
-                    printf("UPnP: ExternalIPAddress = %s\n", externalIPAddress);
-                    AddLocal(CNetAddr(externalIPAddress), LOCAL_UPNP);
-                }
-                else
-                    printf("UPnP: GetExternalIPAddress failed.\n");
-            }
-        }
 
         string strDesc = "Neutrinocoin " + FormatFullVersion();
 
@@ -1187,55 +1200,50 @@ void MapPort(bool)
 
 
 
-// DNS seeds
-// Each pair gives a source name and a seed name.
-// The first name is used as information source for addrman.
-// The second name should resolve to a list of seed addresses.
-static const char *strMainNetDNSSeed[][2] = {
-    {"neutrinocointools.com", "dnsseed.neutrinocointools.com"},
-    {"neutrinocoinpool.org", "dnsseed.neutrinocoinpool.org"},
-    {"xurious.com", "dnsseed.ltc.xurious.com"},
-    {"koin-project.com", "dnsseed.koin-project.com"},
-    {"weminemnc.com", "dnsseed.weminemnc.com"},
-    {NULL, NULL}
+// hidden service seeds
+static const char *strMainNetOnionSeed[][1] = {
+    {"dj26yhi2o2f3gdg5.onion"},
+    {"kuchvei4zuqbgnbh.onion"},
+    {"ayhlrw6r6bgchult.onion"},
+    {"rrsmll5uy2gk5f5l.onion"},
+    {"wnkkllhmdl2o55wv.onion"},
+    {NULL}
 };
 
-static const char *strTestNetDNSSeed[][2] = {
-    {"neutrinocointools.com", "testnet-seed.neutrinocointools.com"},
-    {"weminemnc.com", "testnet-seed.weminemnc.com"},
-    {NULL, NULL}
+static const char *strTestNetOnionSeed[][1] = {
+    {"dj26yhi2o2f3gdg5.onion"},
+    {"kuchvei4zuqbgnbh.onion"},
+    {"ayhlrw6r6bgchult.onion"},
+    {"rrsmll5uy2gk5f5l.onion"},
+    {"wnkkllhmdl2o55wv.onion"},
+    {NULL}
 };
 
-void ThreadDNSAddressSeed()
+void ThreadOnionSeed()
 {
-    static const char *(*strDNSSeed)[2] = fTestNet ? strTestNetDNSSeed : strMainNetDNSSeed;
+    static const char *(*strOnionSeed)[1] = fTestNet ? strTestNetOnionSeed : strMainNetOnionSeed;
 
     int found = 0;
 
-    printf("Loading addresses from DNS seeds (could take a while)\n");
+    printf("Loading addresses from .onion seeds\n");
 
-    for (unsigned int seed_idx = 0; strDNSSeed[seed_idx][0] != NULL; seed_idx++) {
-        if (HaveNameProxy()) {
-            AddOneShot(strDNSSeed[seed_idx][1]);
-        } else {
-            vector<CNetAddr> vaddr;
-            vector<CAddress> vAdd;
-            if (LookupHost(strDNSSeed[seed_idx][1], vaddr))
-            {
-                BOOST_FOREACH(CNetAddr& ip, vaddr)
-                {
-                    int nOneDay = 24*3600;
-                    CAddress addr = CAddress(CService(ip, GetDefaultPort()));
-                    addr.nTime = GetTime() - 3*nOneDay - GetRand(4*nOneDay); // use a random age between 3 and 7 days old
-                    vAdd.push_back(addr);
-                    found++;
-                }
-            }
-            addrman.Add(vAdd, CNetAddr(strDNSSeed[seed_idx][0], true));
+    for (unsigned int seed_idx = 0; strOnionSeed[seed_idx][0] != NULL; seed_idx++) {
+        CNetAddr parsed;
+        if (
+            !parsed.SetSpecial(
+                strOnionSeed[seed_idx][0]
+            )
+        ) {
+            throw runtime_error("ThreadOnionSeed() : invalid .onion seed");
         }
+        int nOneDay = 24*3600;
+        CAddress addr = CAddress(CService(parsed, GetDefaultPort()));
+        addr.nTime = GetTime() - 3*nOneDay - GetRand(4*nOneDay); // use a random age between 3 and 7 days old
+        found++;
+        addrman.Add(addr, parsed);
     }
 
-    printf("%d addresses found from DNS seeds\n", found);
+    printf("%d addresses found from .onion seeds\n", found);
 }
 
 
@@ -1776,66 +1784,12 @@ bool BindListenPort(const CService &addrBind, string& strError)
 
     vhListenSocket.push_back(hListenSocket);
 
-    if (addrBind.IsRoutable() && fDiscover)
-        AddLocal(addrBind, LOCAL_BIND);
-
     return true;
 }
 
 void static Discover()
 {
-    if (!fDiscover)
-        return;
-
-#ifdef WIN32
-    // Get local host IP
-    char pszHostName[1000] = "";
-    if (gethostname(pszHostName, sizeof(pszHostName)) != SOCKET_ERROR)
-    {
-        vector<CNetAddr> vaddr;
-        if (LookupHost(pszHostName, vaddr))
-        {
-            BOOST_FOREACH (const CNetAddr &addr, vaddr)
-            {
-                AddLocal(addr, LOCAL_IF);
-            }
-        }
-    }
-#else
-    // Get local host ip
-    struct ifaddrs* myaddrs;
-    if (getifaddrs(&myaddrs) == 0)
-    {
-        for (struct ifaddrs* ifa = myaddrs; ifa != NULL; ifa = ifa->ifa_next)
-        {
-            if (ifa->ifa_addr == NULL) continue;
-            if ((ifa->ifa_flags & IFF_UP) == 0) continue;
-            if (strcmp(ifa->ifa_name, "lo") == 0) continue;
-            if (strcmp(ifa->ifa_name, "lo0") == 0) continue;
-            if (ifa->ifa_addr->sa_family == AF_INET)
-            {
-                struct sockaddr_in* s4 = (struct sockaddr_in*)(ifa->ifa_addr);
-                CNetAddr addr(s4->sin_addr);
-                if (AddLocal(addr, LOCAL_IF))
-                    printf("IPv4 %s: %s\n", ifa->ifa_name, addr.ToString().c_str());
-            }
-#ifdef USE_IPV6
-            else if (ifa->ifa_addr->sa_family == AF_INET6)
-            {
-                struct sockaddr_in6* s6 = (struct sockaddr_in6*)(ifa->ifa_addr);
-                CNetAddr addr(s6->sin6_addr);
-                if (AddLocal(addr, LOCAL_IF))
-                    printf("IPv6 %s: %s\n", ifa->ifa_name, addr.ToString().c_str());
-            }
-#endif
-        }
-        freeifaddrs(myaddrs);
-    }
-#endif
-
-    // Don't use external IPv4 discovery, when -onlynet="IPv6"
-    if (!IsLimited(NET_IPV4))
-        NewThread(ThreadGetMyExternalIP, NULL);
+    // no network discovery
 }
 
 void StartNode(boost::thread_group& threadGroup)
@@ -1855,10 +1809,10 @@ void StartNode(boost::thread_group& threadGroup)
     // Start threads
     //
 
-    if (!GetBoolArg("-dnsseed", true))
-        printf("DNS seeding disabled\n");
+    if (!GetBoolArg("-onionseed", true))
+        printf(".onion seeding disabled\n");
     else
-        threadGroup.create_thread(boost::bind(&TraceThread<boost::function<void()> >, "dnsseed", &ThreadDNSAddressSeed));
+        threadGroup.create_thread(boost::bind(&TraceThread<boost::function<void()> >, "onionseed", &ThreadOnionSeed));
 
 #ifdef USE_UPNP
     // Map ports with UPnP
