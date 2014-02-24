@@ -49,11 +49,11 @@ If you configure your Tor system accordingly, it is possible to make your node a
 reachable from the Tor network. Add these lines to your /etc/tor/torrc (or equivalent
 config file):
 
-  HiddenServiceDir /var/lib/tor/litecoin-service/
-  HiddenServicePort 9333 127.0.0.1:9333
+  HiddenServiceDir /var/lib/tor/liteecoin-service/
+  HiddenServicePort 8777 127.0.0.1:8777
 
 The directory can be different of course, but (both) port numbers should be equal to
-your litecoind's P2P listen port (9333 by default).
+your litecoind's P2P listen port (8777 by default).
 
 -externalip=X   You can tell litecoin about its publicly reachable address using
                 this option, and this can be a .onion address. Given the above
