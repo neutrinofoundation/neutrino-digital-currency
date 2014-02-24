@@ -31,9 +31,6 @@ Set database cache size in megabytes (default: 25)
 \fB\-timeout=\fR<n>
 Specify connection timeout in milliseconds (default: 5000)
 .TP
-\fB\-proxy=\fR<ip:port>
-Connect through socks proxy
-.TP
 \fB\-socks=\fR<n>
 Select the version of socks proxy to use (4\-5, default: 5)
 .TP
@@ -61,23 +58,11 @@ Connect to a node to retrieve peer addresses, and disconnect
 \fB\-externalip=\fR<ip>
 Specify your own public address
 .TP
-\fB\-onlynet=\fR<net>
-Only connect to nodes in network <net> (IPv4, IPv6 or Tor)
-.TP
-\fB\-discover\fR
-Discover own IP address (default: 1 when listening and no \fB\-externalip\fR)
-.TP
 \fB\-checkpoints\fR
 Only accept block chain matching built\-in checkpoints (default: 1)
 .TP
-\fB\-listen\fR
-Accept connections from outside (default: 1 if no \fB\-proxy\fR or \fB\-connect\fR)
-.TP
-\fB\-bind=\fR<addr>
-Bind to given address and always listen on it. Use [host]:port notation for IPv6
-.TP
-\fB\-dnsseed\fR
-Find peers using DNS lookup (default: 1 unless \fB\-connect\fR)
+\fB\-onionseed\fR
+Find peers using .onion seed nodes (default: 1 unless \fB\-connect\fR)
 .TP
 \fB\-banscore=\fR<n>
 Threshold for disconnecting misbehaving peers (default: 100)
