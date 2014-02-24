@@ -29,6 +29,8 @@
 
 #include "netbase.h" // for AddTimeData
 
+#include <inttypes.h>
+
 static const int64 COIN = 100000000;
 static const int64 CENT = 1000000;
 
@@ -49,6 +51,10 @@ static const int64 CENT = 1000000;
 #define PRI64u  "llu"
 #define PRI64x  "llx"
 #endif
+#endif
+
+#ifndef PRId64
+#define PRId64  PRI64d
 #endif
 
 /* Format characters for (s)size_t and ptrdiff_t */
