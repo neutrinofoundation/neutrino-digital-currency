@@ -29,9 +29,6 @@
 
 #include "netbase.h" // for AddTimeData
 
-typedef long long  int64;
-typedef unsigned long long  uint64;
-
 static const int64 COIN = 100000000;
 static const int64 CENT = 1000000;
 
@@ -145,7 +142,6 @@ extern bool fCommandLine;
 extern std::string strMiscWarning;
 extern bool fTestNet;
 extern bool fBloomFilters;
-extern bool fNoListen;
 extern bool fLogTimestamps;
 extern volatile bool fReopenDebugLog;
 

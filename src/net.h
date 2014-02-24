@@ -70,7 +70,6 @@ void SetReachable(enum Network net, bool fFlag = true);
 CAddress GetLocalAddress(const CNetAddr *paddrPeer = NULL);
 
 
-extern bool fDiscover;
 extern uint64 nLocalServices;
 extern uint64 nLocalHostNonce;
 extern CAddrMan addrman;
@@ -187,6 +186,7 @@ public:
     bool fOneShot;
     bool fClient;
     bool fInbound;
+    bool fVerified;
     bool fNetworkNode;
     bool fSuccessfullyConnected;
     bool fDisconnect;
@@ -245,6 +245,7 @@ public:
         fOneShot = false;
         fClient = false; // set by version message
         fInbound = fInboundIn;
+        fVerified = false;
         fNetworkNode = false;
         fSuccessfullyConnected = false;
         fDisconnect = false;
