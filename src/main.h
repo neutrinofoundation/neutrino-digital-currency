@@ -1674,7 +1674,7 @@ public:
         phashBlock = NULL;
         pprev = NULL;
         pnext = NULL;
-        nHeight = 0;
+        nHeight = 1;
         nFile = 0;
         nDataPos = 0;
         nUndoPos = 0;
@@ -1695,7 +1695,7 @@ public:
         phashBlock = NULL;
         pprev = NULL;
         pnext = NULL;
-        nHeight = 0;
+        nHeight = 1;
         nFile = 0;
         nDataPos = 0;
         nUndoPos = 0;

@@ -48,7 +48,11 @@ Object blockToJSON(const CBlock& block, const CBlockIndex* blockindex)
     Object result;
     result.push_back(Pair("hash", block.GetHash().GetHex()));
     std::auto_ptr<CMerkleTx> txGen;
-    txGen.reset(new CMerkleTx(block.vtx[0]));
+    if (block.vtx.empty()) {
+        txGen.reset(new CMerkleTx);
+    } else {
+        txGen.reset(new CMerkleTx(block.vtx[0]));
+    }
     txGen->SetMerkleBranch(&block);
     result.push_back(Pair("confirmations", (int)txGen->GetDepthInMainChain()));
     result.push_back(Pair("size", (int)::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION)));
