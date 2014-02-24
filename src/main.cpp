@@ -1063,7 +1063,7 @@ uint256 static GetOrphanRoot(const CBlockHeader* pblock)
 
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
-    // Privatecoin: 210M in the first 6 months, 1.1% increase in coins per year
+    // Neutrinocoin: 210M in the first 6 months, 1.1% increase in coins per year
     //              after that
     int64 nSubsidy = 1996 * COIN;
     int64 const half_year_blocks = 105192;

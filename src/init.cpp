@@ -11,7 +11,7 @@
 #include "util.h"
 #include "ui_interface.h"
 #ifdef QT_GUI
-#include "privatecoin.h"
+#include "neutrinocoin.h"
 #endif
 
 #include <boost/filesystem.hpp>

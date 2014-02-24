@@ -1,7 +1,7 @@
 TOR SUPPORT IN BITCOIN
 ======================
 
-It is possible to run Litecoin as a Tor hidden service, and connect to such services.
+It is possible to run Neutrinocoin as a Tor hidden service, and connect to such services.
 
 The following directions assume you have a Tor proxy running on port 9050. Many distributions
 default to having a SOCKS proxy listening on port 9050, but others may not.
@@ -10,10 +10,10 @@ https://www.torproject.org/docs/faq.html.en#TBBSocksPort for how to properly
 configure Tor.
 
 
-1. Run litecoin behind a Tor proxy
+1. Run neutrinocoin behind a Tor proxy
 ---------------------------------
 
-The first step is running Litecoin behind a Tor proxy. This will already make all
+The first step is running Neutrinocoin behind a Tor proxy. This will already make all
 outgoing connections be anonimized, but more is possible.
 
 -socks=5        SOCKS5 supports connecting-to-hostname, which can be used instead
@@ -30,33 +30,33 @@ outgoing connections be anonimized, but more is possible.
 
 In a typical situation, this suffices to run behind a Tor proxy:
 
-  ./litecoind -tor=127.0.0.1:9050
+  ./neutrinocoind -tor=127.0.0.1:9050
 
 
-2. Run a litecoin hidden server
+2. Run a neutrinocoin hidden server
 ------------------------------
 
 If you configure your Tor system accordingly, it is possible to make your node also
 reachable from the Tor network. Add these lines to your /etc/tor/torrc (or equivalent
 config file):
 
-  HiddenServiceDir /var/lib/tor/litecoin-service/
+  HiddenServiceDir /var/lib/tor/neutrinocoin-service/
   HiddenServicePort 8777 127.0.0.1:8777
 
 The directory can be different of course, but (both) port numbers should be equal to
-your litecoind's P2P listen port (8777 by default).
+your neutrinocoind's P2P listen port (8777 by default).
 
--externalip=X   You can tell litecoin about its publicly reachable address using
+-externalip=X   You can tell neutrinocoin about its publicly reachable address using
                 this option, and this can be a .onion address. Given the above
                 configuration, you can find your onion address in
-                /var/lib/tor/litecoin-service/hostname. Onion addresses are given
+                /var/lib/tor/neutrinocoin-service/hostname. Onion addresses are given
                 preference for your node to advertize itself with, for connections
                 coming from unroutable addresses (such as 127.0.0.1, where the
                 Tor proxy typically runs).
 
 In a typical situation, where you're only reachable via Tor, this should suffice:
 
-  ./litecoind -tor=127.0.0.1:9050 -externalip=57qr3yd1nyntf5k.onion
+  ./neutrinocoind -tor=127.0.0.1:9050 -externalip=57qr3yd1nyntf5k.onion
 
 (obviously, replace the Onion address with your own).
 

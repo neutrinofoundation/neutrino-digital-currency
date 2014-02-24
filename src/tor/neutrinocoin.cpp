@@ -1,9 +1,9 @@
 /* Copyright (c) 2009-2010 Satoshi Nakamoto
    Copyright (c) 2009-2012 The Bitcoin developers
-   Copyright (c) 2014 The Privatecoin developers */
+   Copyright (c) 2013-2014 The Neutrinocoin developers */
 /* See LICENSE for licensing information */
 
-#include "privatecoin.h"
+#include "neutrinocoin.h"
 
 #include <boost/filesystem.hpp>
 #include <boost/thread/thread.hpp>
@@ -20,7 +20,7 @@ static boost::filesystem::path GetDefaultDataDir()
     // Unix: ~/.bitcoin
 #ifdef _WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "Privatecoin";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "Neutrinocoin";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -32,15 +32,15 @@ static boost::filesystem::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     fs::create_directory(pathRet);
-    return pathRet / "Privatecoin";
+    return pathRet / "Neutrinocoin";
 #else
     // Unix
-    return pathRet / ".privatecoin";
+    return pathRet / ".neutrinocoin";
 #endif
 #endif
 }
 
-char const* privatecoin_tor_data_directory(
+char const* neutrinocoin_tor_data_directory(
 ) {
     static std::string const retrieved = (
         GetDefaultDataDir(
@@ -51,7 +51,7 @@ char const* privatecoin_tor_data_directory(
     );
 }
 
-char const* privatecoin_service_directory(
+char const* neutrinocoin_service_directory(
 ) {
     static std::string const retrieved = (
         GetDefaultDataDir(
