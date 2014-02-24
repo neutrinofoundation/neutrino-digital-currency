@@ -1063,15 +1063,34 @@ uint256 static GetOrphanRoot(const CBlockHeader* pblock)
 
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
-    int64 nSubsidy = 50 * COIN;
-
-    // Subsidy is cut in half every 840000 blocks, which will occur approximately every 4 years
-    nSubsidy >>= (nHeight / 840000); // Neutrinocoin: 840k blocks in ~4 years
+    // Privatecoin: 210M in the first 6 months, 1.1% increase in coins per year
+    //              after that
+    int64 nSubsidy = 1996 * COIN;
+    int64 const half_year_blocks = 105192;
+    int64 remaining_height = nHeight;
+    int64 const decimal_shift = 10000;
+    int64 adaption[][2] = {
+        {   55,1},
+        {10000,2},
+        {10110,1},
+    };
+    int index = 0;
+    while (
+        half_year_blocks + 1 < remaining_height
+    ) {
+        remaining_height -= half_year_blocks;
+        nSubsidy *= adaption[index][0];
+        nSubsidy /= decimal_shift;
+        index = adaption[index][1];
+    }
 
     return nSubsidy + nFees;
 }
 
-static const int64 nTargetTimespan = 3.5 * 24 * 60 * 60; // Neutrinocoin: 3.5 days
+static const int64 difficulty_decrease_max = 400;
+static const int64 difficulty_increase_max = 25;
+
+static const int64 nTargetTimespan = 60 * 60; // Neutrinocoin: 1 hour
 static const int64 nTargetSpacing = 2.5 * 60; // Neutrinocoin: 2.5 minutes
 static const int64 nInterval = nTargetTimespan / nTargetSpacing;
 
@@ -1093,7 +1112,7 @@ unsigned int ComputeMinWork(unsigned int nBase, int64 nTime)
         // Maximum 400% adjustment...
         bnResult *= 4;
         // ... in best-case exactly 4-times-normal target time
-        nTime -= nTargetTimespan*4;
+        nTime -= nTargetTimespan*difficulty_decrease_max/100;
     }
     if (bnResult > bnProofOfWorkLimit)
         bnResult = bnProofOfWorkLimit;
@@ -1146,10 +1165,10 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
     // Limit adjustment step
     int64 nActualTimespan = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
     printf("  nActualTimespan = %"PRI64d"  before bounds\n", nActualTimespan);
-    if (nActualTimespan < nTargetTimespan/4)
-        nActualTimespan = nTargetTimespan/4;
-    if (nActualTimespan > nTargetTimespan*4)
-        nActualTimespan = nTargetTimespan*4;
+    if (nActualTimespan < nTargetTimespan*difficulty_increase_max/100)
+        nActualTimespan = nTargetTimespan*difficulty_increase_max/100;
+    if (nActualTimespan > nTargetTimespan*difficulty_decrease_max/100)
+        nActualTimespan = nTargetTimespan*difficulty_decrease_max/100;
 
     // Retarget
     CBigNum bnNew;
