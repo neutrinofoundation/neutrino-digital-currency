@@ -254,7 +254,7 @@ public:
         nSendOffset = 0;
         hashContinue = 0;
         pindexLastGetBlocksBegin = 0;
-        hashLastGetBlocksEnd = 0;
+        hashLastGetBlocksEnd = -1;
         nStartingHeight = -1;
         fStartSync = false;
         fGetAddr = false;
