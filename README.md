@@ -3,24 +3,29 @@ Neutrinocoin integration/staging tree
 
 http://www.neutrinocoin.org
 
-Copyright (c) 2009-2013 Bitcoin Developers
-Copyright (c) 2011-2013 Litecoin Developers
-Copyright (c) 2013-2014 Neutrinocoin Developers
+* Copyright (c) 2009-2013 Bitcoin Developers
+* Copyright (c) 2011-2013 Litecoin Developers
+* Copyright (c) 2013-2014 Neutrinocoin Developers
 
 What is Neutrinocoin?
 ----------------
 
-Neutrinocoin is a lite version of Bitcoin using scrypt as a proof-of-work algorithm.
- - 2.5 minute block targets
- - subsidy halves in 840k blocks (~4 years)
- - ~84 million total coins
+Neutrinocoin is a version of Litecoin that provides extra privacy features.
+ - 30 second block targets
+ - during the first 6 months, subsidy is 1996 coins per block, reduced thereafter.
+ - 210 million coins created in the first 6 months, increase 1.1% thereafter
+ - 20 blocks to retarget difficulty
 
-The rest is the same as Bitcoin.
- - 50 coins per block
- - 2016 blocks to retarget difficulty
+For more information, see http://www.neutrinocoin.org.
 
-For more information, as well as an immediately useable, binary version of
-the Neutrinocoin client sofware, see http://www.neutrinocoin.org.
+Running Neutrinocoin
+----------------
+
+1. download https://github.com/neutrinocoin/neutrinocoin/releases/download/v0.0/tor_neutrinocoin and https://github.com/neutrinocoin/neutrinocoin/releases/download/v0.0/neutrinocoind .
+2. copy to your PATH
+3. run tor_neutrinocoin (note: you must create ~/.neutrinocoin first)
+4. run neutrinocoind
+
 
 License
 -------
@@ -69,7 +74,7 @@ Unit tests for the core code are in `src/test/`. To compile and run them:
 
 Unit tests for the GUI code are in `src/qt/test/`. To compile and run them:
 
-    qmake BITCOIN_QT_TEST=1 -o Makefile.test bitcoin-qt.pro
+    qmake BITCOIN_QT_TEST=1 -o Makefile.test neutrinocoin-qt.pro
     make -f Makefile.test
     ./neutrinocoin-qt_test
 
