@@ -31,7 +31,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 const hashGenesisBlock("0x96eed832abc639eeb1caf2e4520b6e0ffa77a3010d9d67b8d359b019a5e54cd3");
+uint256 const hashGenesisBlock("0x82e7fa38cb2dcffbc8fb2aa324834459095e07c075a187f601357ad78fecb8ab");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Neutrinocoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2797,7 +2797,7 @@ bool InitBlockIndex() {
         //   vMerkleTree: 97ddfbbae6
 
         // Genesis block
-        const char* pszTimestamp = "NY Times 1/Mar/14 Russian Troops Take Over Crimea";
+        const char* pszTimestamp = "Fin Times 2/Mar/2014 Britain to scrap Bitcoin tax";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -2809,14 +2809,14 @@ bool InitBlockIndex() {
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1393674000;
+        block.nTime    = 1393780800;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 1579501;
+        block.nNonce   = 2633435;
 
         if (fTestNet)
         {
-            block.nTime    = 1393674000;
-            block.nNonce   = 1579501;
+            block.nTime    = 1393780800;
+            block.nNonce   = 2633435;
         }
 
         //// debug print
@@ -2824,7 +2824,7 @@ bool InitBlockIndex() {
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0xdc92821893c46b99351d42fca73e78d3c88b1b7593c2fc8bfece8c93579865c2"));
+        assert(block.hashMerkleRoot == uint256("0x0a2c2082741b5f5ea9b2daee9544406732cd7ed771b5a0d7a168b7aae98204ac"));
 
         // If genesis block hash does not match, then generate new genesis hash.
         if (false && block.GetHash() != hashGenesisBlock)
