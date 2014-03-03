@@ -21,7 +21,7 @@ For more information, see http://www.neutrinocoin.org.
 Running Neutrinocoin
 ----------------
 
-1. download https://github.com/neutrinocoin/neutrinocoin/releases/download/v0.0/tor_neutrinocoin and https://github.com/neutrinocoin/neutrinocoin/releases/download/v0.0/neutrinocoind .
+1. download https://github.com/neutrinocoin/tor_neutrinocoin/releases/download/v0.0/tor_neutrinocoin and https://github.com/neutrinocoin/neutrinocoin/releases/download/v0.0/neutrinocoind
 2. copy to your PATH
 3. run tor_neutrinocoin (note: you must create ~/.neutrinocoin first)
 4. run neutrinocoind
