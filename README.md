@@ -12,7 +12,7 @@ What is Neutrinocoin?
 
 Neutrinocoin is a version of Litecoin that provides extra privacy features.
  - 30 second block targets
- - during the first 6 months, subsidy is 1996 coins per block, reduced thereafter.
+ - during the first 6 months, subsidy is 3992 coins per block, reduced thereafter.
  - 210 million coins created in the first 6 months, increase 1.1% thereafter
  - 20 blocks to retarget difficulty
 

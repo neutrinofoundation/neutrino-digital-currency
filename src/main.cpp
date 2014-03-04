@@ -31,7 +31,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 const hashGenesisBlock("0x82e7fa38cb2dcffbc8fb2aa324834459095e07c075a187f601357ad78fecb8ab");
+uint256 const hashGenesisBlock("0x108efb349a734c33c54f60be1bc84ec6440e054a0dab135f2cc83a262fe38c11");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Neutrinocoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -1063,33 +1063,25 @@ uint256 static GetOrphanRoot(const CBlockHeader* pblock)
 
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
-    // Neutrinocoin: 210M in the first 6 months, 1.1% increase in coins per year
-    //              after that
-    int64 nSubsidy = 1996 * COIN;
-    int64 const half_year_blocks = 105192;
+    // Neutrinocoin: 210M in the first 3 months, 1.1% increase in coins per year after that
+    int64 nSubsidy = 3992 * COIN;
+    int64 const quarter_year_blocks = 52596;
     int64 remaining_height = nHeight;
-    int64 const decimal_shift = 10000;
-    int64 adaption[][2] = {
-        {   55,1},
-        {10000,2},
-        {10110,1},
-    };
-    int index = 0;
-    while (
-        half_year_blocks + 1 < remaining_height
-    ) {
-        remaining_height -= half_year_blocks;
-        nSubsidy *= adaption[index][0];
-        nSubsidy /= decimal_shift;
-        index = adaption[index][1];
+    int quarter = 2;
+    while ( remaining_height > quarter_year_blocks + 1 ) {
+        remaining_height -= quarter_year_blocks;
+        if (quarter == 2) {
+            nSubsidy = nSubsidy * 275 / 100000; // at beginning of second quarter year period, subsidy is reduced to 1/4 of 1.1% of original subsidy
+        } else if ( ( ( quarter - 1 ) % 4 ) + 1 == 2 ) {
+            nSubsidy = nSubsidy * 1011 / 1000; // thereafter, subsidy increases by 1.1% each year
+        }
     }
-
     return nSubsidy + nFees;
 }
 
-static const int64 nTargetTimespan = 10 * 60; // Neutrinocoin: 10 minutes
-static const int64 nTargetSpacing = 0.5 * 60; // Neutrinocoin: 0.5 minutes
-static const int64 nInterval = nTargetTimespan / nTargetSpacing;
+static const int64 nTargetTimespan = 60 * 60; // 60 minutes
+static const int64 nTargetSpacing = 2.5 * 60; // 2.5 minutes
+static const int64 nInterval = nTargetTimespan / nTargetSpacing; // 24 blocks
 static const int64 nMaxDifficultyIncrease = 10;
 static const int64 nMaxDifficultyDecrease = 50;
 
@@ -2797,26 +2789,26 @@ bool InitBlockIndex() {
         //   vMerkleTree: 97ddfbbae6
 
         // Genesis block
-        const char* pszTimestamp = "Fin Times 2/Mar/2014 Britain to scrap Bitcoin tax";
+        const char* pszTimestamp = "The Guardian 4/Mar/2014 Flexcoin closes after hack attack";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[0].nValue = 50 * COIN;
+        txNew.vout[0].nValue = 1 * COIN;
         txNew.vout[0].scriptPubKey = CScript() << ParseHex("046e4cd7a81b37218401c5cc3f11d06a8b7c4f2c1dbfc6cecab47da4623d742c28ce4b7069238682488fd201421704482b4b384e8d2a498d10ba86dcc5c14b6239") << OP_CHECKSIG;
         CBlock block;
         block.vtx.push_back(txNew);
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1393780800;
+        block.nTime    = 1393936380;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 2633435;
+        block.nNonce   = 2063244;
 
         if (fTestNet)
         {
-            block.nTime    = 1393780800;
-            block.nNonce   = 2633435;
+            block.nTime    = 1393936380;
+            block.nNonce   = 2063244;
         }
 
         //// debug print
@@ -2824,7 +2816,7 @@ bool InitBlockIndex() {
         printf("%s\n", hash.ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x0a2c2082741b5f5ea9b2daee9544406732cd7ed771b5a0d7a168b7aae98204ac"));
+        assert(block.hashMerkleRoot == uint256("0x9b37b43cd7ff3517102de22280013c8029decc55c29c3d4b12ad55131347192d"));
 
         // If genesis block hash does not match, then generate new genesis hash.
         if (false && block.GetHash() != hashGenesisBlock)
