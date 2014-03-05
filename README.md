@@ -12,16 +12,16 @@ What is Neutrinocoin?
 
 Neutrinocoin is a version of Litecoin that provides extra privacy features.
  - 30 second block targets
- - during the first 6 months, subsidy is 3992 coins per block, reduced thereafter.
- - 210 million coins created in the first 6 months, increase 1.1% thereafter
- - 20 blocks to retarget difficulty
+ - during the first 3 months, subsidy is 3992 coins per block, reduced thereafter.
+ - 210 million coins created in the first 3 months, increase 1.1% thereafter
+ - 24 blocks to retarget difficulty
 
 For more information, see http://www.neutrinocoin.org.
 
 Running Neutrinocoin
 ----------------
 
-1. download https://github.com/neutrinocoin/tor_neutrinocoin/releases/download/v0.0/tor_neutrinocoin and https://github.com/neutrinocoin/neutrinocoin/releases/download/v0.0/neutrinocoind
+1. download https://github.com/neutrinocoin/tor_neutrinocoin/releases/download/v0.1/tor_neutrinocoin and https://github.com/neutrinocoin/neutrinocoin/releases/download/v0.1/neutrinocoind
 2. copy to your PATH
 3. run tor_neutrinocoin (note: you must create ~/.neutrinocoin first)
 4. run neutrinocoind
