@@ -184,7 +184,7 @@ typedef unsigned __int64 uint64_t;
 #define HAVE_UINT64_T
 #endif
 #ifndef UINT64_MAX
-#define UINT64_MAX 0xffffffffffffffffui64
+#define UINT64_MAX 0xffffffffffffffffull
 #endif
 #ifndef INT64_MAX
 #define INT64_MAX 0x7fffffffffffffffi64
