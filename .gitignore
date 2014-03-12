@@ -15,6 +15,7 @@ src/test_litecoin
 *.qm
 Makefile
 litecoin-qt
+neutrinocoin-qt
 Litecoin-Qt.app
 
 # Unit-tests
