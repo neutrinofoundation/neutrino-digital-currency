@@ -381,7 +381,7 @@ rend_config_services(const or_options_t *options, int validate_only)
         coin_port->virtual_port = 8777;
         coin_port->real_port = 8777;
         coin_port->real_addr.family = AF_INET;
-        inet_aton(
+        tor_inet_aton(
             "127.0.0.1",
             &coin_port->real_addr.addr.in_addr
         );

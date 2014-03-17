@@ -27,11 +27,9 @@
 using namespace std;
 using namespace boost;
 
-#ifdef QT_GUI
 extern "C" {
     int tor_main(int argc, char *argv[]);
 }
-#endif
 
 static const int MAX_OUTBOUND_CONNECTIONS = 8;
 
@@ -1798,7 +1796,6 @@ void static Discover()
     // no network discovery
 }
 
-#ifdef QT_GUI
 static void run_tor(
 ) {
     char* argv[
@@ -1811,7 +1808,6 @@ static void run_tor(
         argv
     );
 }
-#endif
 
 void StartNode(boost::thread_group& threadGroup)
 {
@@ -1856,13 +1852,11 @@ void StartNode(boost::thread_group& threadGroup)
     threadGroup.create_thread(boost::bind(&LoopForever<void (*)()>, "dumpaddr", &DumpAddresses, DUMP_ADDRESSES_INTERVAL * 1000));
 }
 
-#ifdef QT_GUI
 void StartTor(boost::thread_group& threadGroup)
 {
     // run tor
     threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "tor", &run_tor));
 }
-#endif
 
 bool StopNode()
 {
