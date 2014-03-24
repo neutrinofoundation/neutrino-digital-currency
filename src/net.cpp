@@ -1796,17 +1796,18 @@ void static Discover()
     // no network discovery
 }
 
-static void run_tor(
-) {
-    char* argv[
-    ] = {
+static void run_tor() {
+    std::string logDecl = "notice file " + GetDefaultDataDir().string() + "/tor/tor.log";
+    char *argvLogDecl = (char*) logDecl.c_str();
+
+    char* argv[] = {
         "tor",
-        NULL,
+        "--hush",
+        "--Log",
+        argvLogDecl
     };
-    tor_main(
-        1,
-        argv
-    );
+
+    tor_main(4, argv);
 }
 
 void StartNode(boost::thread_group& threadGroup)
