@@ -41,7 +41,8 @@ LIBS += \
    -l db_cxx$(BDB_LIB_SUFFIX) \
    -l ssl \
    -l crypto \
-   -l event
+   -l event \
+   -l rt
 
 TESTLIBS += \
  -Wl,-B$(LMODE) \
