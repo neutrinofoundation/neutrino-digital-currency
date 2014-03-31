@@ -1079,9 +1079,9 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
     return nSubsidy + nFees;
 }
 
-static const int64 nTargetTimespan = 60 * 60; // 60 minutes
+static const int64 nTargetTimespan = 30 * 60; // 30 minutes
 static const int64 nTargetSpacing = 2.5 * 60; // 2.5 minutes
-static const int64 nInterval = nTargetTimespan / nTargetSpacing; // 24 blocks
+static const int64 nInterval = nTargetTimespan / nTargetSpacing; // 12 blocks
 static const int64 nMaxDifficultyIncrease = 10;
 static const int64 nMaxDifficultyDecrease = 50;
 
