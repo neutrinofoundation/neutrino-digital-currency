@@ -5,7 +5,7 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 0.8.6.1
+!define VERSION 0.0.3.1
 !define COMPANY "Neutrinocoin Foundation"
 !define URL http://www.neutrinocoin.org/
 
@@ -45,13 +45,13 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile neutrinocoin-0.8.6.1-win32-setup.exe
+OutFile neutrinocoin-0.0.3.1-win32-setup.exe
 InstallDir $PROGRAMFILES\Neutrinocoin
 CRCCheck on
 XPStyle on
 BrandingText " "
 ShowInstDetails show
-VIProductVersion 0.8.6.1
+VIProductVersion 0.0.3.1
 VIAddVersionKey ProductName Neutrinocoin
 VIAddVersionKey ProductVersion "${VERSION}"
 VIAddVersionKey CompanyName "${COMPANY}"

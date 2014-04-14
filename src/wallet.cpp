@@ -30,15 +30,9 @@ struct CompareValueOnly
 
 CPubKey CWallet::GenerateNewKey()
 {
-    bool fCompressed = CanSupportFeature(FEATURE_COMPRPUBKEY); // default to compressed public keys if we want 0.6.0 wallets
-
     RandAddSeedPerfmon();
     CKey secret;
-    secret.MakeNewKey(fCompressed);
-
-    // Compressed public keys were introduced in version 0.6.0
-    if (fCompressed)
-        SetMinVersion(FEATURE_COMPRPUBKEY);
+    secret.MakeNewKey(true);
 
     CPubKey pubkey = secret.GetPubKey();
     if (!AddKeyPubKey(secret, pubkey))
@@ -272,9 +266,6 @@ bool CWallet::EncryptWallet(const SecureString& strWalletPassphrase)
                 pwalletdbEncryption->TxnAbort();
             exit(1); //We now probably have half of our keys encrypted in memory, and half not...die and let the user reload their unencrypted wallet.
         }
-
-        // Encryption was introduced in version 0.4.0
-        SetMinVersion(FEATURE_WALLETCRYPT, pwalletdbEncryption, true);
 
         if (fFileBacked)
         {
