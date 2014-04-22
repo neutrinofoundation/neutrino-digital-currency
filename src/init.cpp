@@ -774,7 +774,9 @@ bool AppInit2(boost::thread_group& threadGroup)
             return InitError(_("Failed to listen on any port."));
     }
 
-    StartTor(threadGroup);
+    if (!(mapArgs.count("-tor") && mapArgs["-tor"] != "0")) {
+        StartTor(threadGroup);
+    }
 
     wait_initialized();
 
