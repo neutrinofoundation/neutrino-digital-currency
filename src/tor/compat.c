@@ -495,7 +495,7 @@ const void *
 tor_memmem(const void *_haystack, size_t hlen,
            const void *_needle, size_t nlen)
 {
-#if defined(HAVE_MEMMEM) && (!defined(__GNUC__) || __GNUC__ >= 2)
+#if defined(HAVE_MEMMEM) && (!defined(__GNUC__) || __GNUC__ >= 2) && !defined(__APPLE__)
   tor_assert(nlen);
   return memmem(_haystack, hlen, _needle, nlen);
 #else

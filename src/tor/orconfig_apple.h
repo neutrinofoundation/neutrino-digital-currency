@@ -233,7 +233,7 @@
 /* #undef HAVE_MALLOC_NP_H */
 
 /* Define to 1 if you have the `memmem' function. */
-#define HAVE_MEMMEM 1
+#define HAVE_MEMMEM 0
 
 /* Define to 1 if you have the <memory.h> header file. */
 #define HAVE_MEMORY_H 1
