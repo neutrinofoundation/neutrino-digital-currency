@@ -11,21 +11,12 @@ What is Neutrinocoin?
 ----------------
 
 Neutrinocoin is a version of Litecoin that provides extra privacy features.
- - 30 second block targets
- - during the first 3 months, subsidy is 3992 coins per block, reduced thereafter.
- - 210 million coins created in the first 3 months, increase 1.1% thereafter
- - 24 blocks to retarget difficulty
+ - 2.5 minute block targets
+ - during the first 3 months, subsidy is 3992 coins per block, reduced thereafter to result in 1.1% annual growth.
+ - 210 million coins created in the first 3 months, increasing 1.1% thereafter
+ - 12 blocks to retarget difficulty
 
 For more information, see http://www.neutrinocoin.org.
-
-Running Neutrinocoin
-----------------
-
-1. download https://github.com/neutrinocoin/tor_neutrinocoin/releases/download/v0.1/tor_neutrinocoin and https://github.com/neutrinocoin/neutrinocoin/releases/download/v0.1/neutrinocoind
-2. copy to your PATH
-3. run tor_neutrinocoin (note: you must create ~/.neutrinocoin first)
-4. run neutrinocoind
-
 
 License
 -------
@@ -43,8 +34,7 @@ If it is a simple/trivial/non-controversial change, then one of the Neutrinocoin
 development team members simply pulls it.
 
 If it is a *more complicated or potentially controversial* change, then the patch
-submitter will be asked to start a discussion (if they haven't already) on the
-[mailing list](http://sourceforge.net/mailarchive/forum.php?forum_name=bitcoin-development).
+submitter should explain their case by opening an issue.
 
 The patch will be accepted if there is broad consensus that it is a good thing.
 Developers should expect to rework and resubmit patches if the code doesn't
@@ -52,7 +42,7 @@ match the project's coding conventions (see `doc/coding.txt`) or are
 controversial.
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/bitcoin/bitcoin/tags) are created
+completely stable. [Tags](https://github.com/neutrinocoin/neutrinocoin/tags) are created
 regularly to indicate new official, stable release versions of Neutrinocoin.
 
 Testing
@@ -74,7 +64,7 @@ Unit tests for the core code are in `src/test/`. To compile and run them:
 
 Unit tests for the GUI code are in `src/qt/test/`. To compile and run them:
 
-    qmake BITCOIN_QT_TEST=1 -o Makefile.test neutrinocoin-qt.pro
+    qmake BITCOIN_QT_TEST=1 -o Makefile.test bitcoin-qt.pro
     make -f Makefile.test
     ./neutrinocoin-qt_test
 
