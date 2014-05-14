@@ -19,12 +19,13 @@ See readme-qt.rst for instructions on building Neutrinocoin-Qt, the graphical us
 Dependencies
 ---------------------
 
- Library     Purpose           Description
- -------     -------           -----------
- libssl      SSL Support       Secure communications
- libdb4.8    Berkeley DB       Blockchain & wallet storage
- libboost    Boost             C++ Library
- miniupnpc   UPnP Support      Optional firewall-jumping support
+ Library      Purpose          Description
+ -------      -------          -----------
+ libssl       SSL Support      Secure communications
+ libdb4.8     Berkeley DB      Blockchain & wallet storage
+ libboost     Boost            C++ Library
+ miniupnpc    UPnP Support     Optional firewall-jumping support
+ libevent-dev Event Support    Handle events via callbacks instead of a loop
 
 [miniupnpc](http://miniupnp.free.fr/) may be used for UPnP port mapping.  It can be downloaded from [here](
 http://miniupnp.tuxfamily.org/files/).  UPnP support is compiled in and
@@ -57,6 +58,7 @@ Build requirements:
 
 	sudo apt-get install build-essential
 	sudo apt-get install libssl-dev
+	sudo apt-get install libevent-dev
 
 for Ubuntu 12.04:
 
