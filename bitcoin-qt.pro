@@ -8,6 +8,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE
 CONFIG += no_include_pwd
 CONFIG += thread
+QMAKE_MACOSX_DEPLOYMENT_TARGET=10.8
+QMAKE_MAC_SDK = /Developer/SDKs/MacOSX10.8.sdk
 
 # for boost 1.37, add -mt to the boost libraries
 # use: qmake BOOST_LIB_SUFFIX=-mt
@@ -26,9 +28,9 @@ UI_DIR = build
 # use: qmake "RELEASE=1"
 contains(RELEASE, 1) {
     # Mac: compile for maximum compatibility (10.9, 64-bit) NOTE: WE SHOULD CHANGE THIS BACK TO 10.5 AND 32-bit SOON AND CHANGE x86_64 to i386 on the 3 lines below
-    macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.6 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.6.sdk
-    macx:QMAKE_CFLAGS += -mmacosx-version-min=10.6 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.6.sdk
-    macx:QMAKE_OBJECTIVE_CFLAGS += -mmacosx-version-min=10.6 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.6.sdk
+    macx:QMAKE_CXXFLAGS += -mmacosx-version-min=10.8 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.8.sdk
+    macx:QMAKE_CFLAGS += -mmacosx-version-min=10.8 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.8.sdk
+    macx:QMAKE_OBJECTIVE_CFLAGS += -mmacosx-version-min=10.8 -arch x86_64 -isysroot /Developer/SDKs/MacOSX10.8.sdk
 
     !win32:!macx {
         # Linux: static link and extra security (see: https://wiki.debian.org/Hardening)
