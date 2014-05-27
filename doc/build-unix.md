@@ -71,14 +71,10 @@ for Ubuntu 12.04:
 
 for other Ubuntu & Debian:
 
-	sudo apt-get install libdb4.8-dev
-	sudo apt-get install libdb4.8++-dev
-	sudo apt-get install libboost1.37-dev
- (If using Boost 1.37, append -mt to the boost libraries in the makefile)
-
-Optional:
-
-	sudo apt-get install libminiupnpc-dev (see USE_UPNP compile flag)
+	sudo apt-get install -y libdb5.1-dev
+	sudo apt-get install -y libdb5.1++-dev
+	sudo apt-get install -y libboost-all-dev
+	sudo apt-get install -y libminiupnpc8 # see USE_UPNP compile flag
 
 
 Notes
