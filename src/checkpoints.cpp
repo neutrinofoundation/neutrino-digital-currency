@@ -45,7 +45,7 @@ namespace Checkpoints
         8000.0     // * estimated number of transactions per day after checkpoint
     };
 
-    static MapCheckpoints mapCheckpointsTestnet = 
+    static MapCheckpoints mapCheckpointsTestnet =
         boost::assign::map_list_of
         (  0, uint256("0xd4fadf07eb214ffabf5a1e10058bb81528405ea29c898ddbaef632642ff97ae7"))
         ;
