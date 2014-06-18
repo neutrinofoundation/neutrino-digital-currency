@@ -4,13 +4,13 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About Neutrinocoin</source>
-        <translation>Sobre Neutrinocoin</translation>
+        <source>About Neutrino</source>
+        <translation>Sobre Neutrino</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;Neutrinocoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;Neutrinocoin&lt;/b&gt; versió</translation>
+        <source>&lt;b&gt;Neutrino&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;Neutrino&lt;/b&gt; versió</translation>
     </message>
     <message>
         <location line="+57"/>
@@ -29,7 +29,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+0"/>
-        <source>The Neutrinocoin developers</source>
+        <source>The Neutrino developers</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -62,8 +62,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location filename="../addressbookpage.cpp" line="+63"/>
-        <source>These are your Neutrinocoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Aquestes són les teves adreces Neutrinocoin per a rebre pagaments. Pot interesar-te proveïr diferents adreces a cadascun dels enviadors així pots identificar qui et va pagant.</translation>
+        <source>These are your Neutrino addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>Aquestes són les teves adreces Neutrino per a rebre pagaments. Pot interesar-te proveïr diferents adreces a cadascun dels enviadors així pots identificar qui et va pagant.</translation>
     </message>
     <message>
         <location filename="../forms/addressbookpage.ui" line="+14"/>
@@ -77,8 +77,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a Neutrinocoin address</source>
-        <translation>Signa el missatge per provar que ets propietari de l&apos;adreça Neutrinocoin</translation>
+        <source>Sign a message to prove you own a Neutrino address</source>
+        <translation>Signa el missatge per provar que ets propietari de l&apos;adreça Neutrino</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -102,8 +102,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-44"/>
-        <source>Verify a message to ensure it was signed with a specified Neutrinocoin address</source>
-        <translation>Verificar un missatge per asegurar-se que ha estat signat amb una adreça Neutrinocoin específica</translation>
+        <source>Verify a message to ensure it was signed with a specified Neutrino address</source>
+        <translation>Verificar un missatge per asegurar-se que ha estat signat amb una adreça Neutrino específica</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -117,8 +117,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location filename="../addressbookpage.cpp" line="-5"/>
-        <source>These are your Neutrinocoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Aquestes són la seva adreça de Neutrinocoin per enviar els pagaments. Sempre revisi la quantitat i l&apos;adreça del destinatari abans transferència de monedes.</translation>
+        <source>These are your Neutrino addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Aquestes són la seva adreça de Neutrino per enviar els pagaments. Sempre revisi la quantitat i l&apos;adreça del destinatari abans transferència de monedes.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -243,8 +243,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+1"/>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR NEUTRINOCOINS&lt;/b&gt;!</source>
-        <translation>Advertència: Si encripteu el vostre moneder i perdeu la constrasenya, &lt;b&gt;PERDREU TOTS ELS VOSTRES NEUTRINOCOINS&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR NEUTRINOS&lt;/b&gt;!</source>
+        <translation>Advertència: Si encripteu el vostre moneder i perdeu la constrasenya, &lt;b&gt;PERDREU TOTS ELS VOSTRES NEUTRINOS&lt;/b&gt;!</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -270,8 +270,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-56"/>
-        <source>Neutrinocoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your neutrinocoins from being stolen by malware infecting your computer.</source>
-        <translation>Neutrinocoin es tancarà ara per acabar el procés d&apos;encriptació. Recorda que encriptar el teu moneder no protegeix completament els teus neutrinocoins de ser robades per programari maliciós instal·lat al teu ordinador.</translation>
+        <source>Neutrino will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your neutrinos from being stolen by malware infecting your computer.</source>
+        <translation>Neutrino es tancarà ara per acabar el procés d&apos;encriptació. Recorda que encriptar el teu moneder no protegeix completament els teus neutrinos de ser robades per programari maliciós instal·lat al teu ordinador.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -369,8 +369,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about Neutrinocoin</source>
-        <translation>Mostra informació sobre Neutrinocoin</translation>
+        <source>Show information about Neutrino</source>
+        <translation>Mostra informació sobre Neutrino</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -414,13 +414,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-347"/>
-        <source>Send coins to a Neutrinocoin address</source>
-        <translation>Enviar monedes a una adreça Neutrinocoin</translation>
+        <source>Send coins to a Neutrino address</source>
+        <translation>Enviar monedes a una adreça Neutrino</translation>
     </message>
     <message>
         <location line="+49"/>
-        <source>Modify configuration options for Neutrinocoin</source>
-        <translation>Modificar les opcions de configuració per neutrinocoin</translation>
+        <source>Modify configuration options for Neutrino</source>
+        <translation>Modificar les opcions de configuració per neutrino</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -450,8 +450,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-165"/>
         <location line="+530"/>
-        <source>Neutrinocoin</source>
-        <translation>Neutrinocoin</translation>
+        <source>Neutrino</source>
+        <translation>Neutrino</translation>
     </message>
     <message>
         <location line="-530"/>
@@ -475,8 +475,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+22"/>
-        <source>&amp;About Neutrinocoin</source>
-        <translation>&amp;Sobre Neutrinocoin</translation>
+        <source>&amp;About Neutrino</source>
+        <translation>&amp;Sobre Neutrino</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -495,13 +495,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+7"/>
-        <source>Sign messages with your Neutrinocoin addresses to prove you own them</source>
-        <translation>Signa el missatges amb la seva adreça de Neutrinocoin per provar que les poseeixes</translation>
+        <source>Sign messages with your Neutrino addresses to prove you own them</source>
+        <translation>Signa el missatges amb la seva adreça de Neutrino per provar que les poseeixes</translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Verify messages to ensure they were signed with specified Neutrinocoin addresses</source>
-        <translation>Verificar els missatges per assegurar-te que han estat signades amb una adreça Neutrinocoin específica.</translation>
+        <source>Verify messages to ensure they were signed with specified Neutrino addresses</source>
+        <translation>Verificar els missatges per assegurar-te que han estat signades amb una adreça Neutrino específica.</translation>
     </message>
     <message>
         <location line="+28"/>
@@ -531,13 +531,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+47"/>
-        <source>Neutrinocoin client</source>
-        <translation>Client Neutrinocoin</translation>
+        <source>Neutrino client</source>
+        <translation>Client Neutrino</translation>
     </message>
     <message numerus="yes">
         <location line="+141"/>
-        <source>%n active connection(s) to Neutrinocoin network</source>
-        <translation><numerusform>%n connexió activa a la xarxa Neutrinocoin</numerusform><numerusform>%n connexions actives a la xarxa Neutrinocoin</numerusform></translation>
+        <source>%n active connection(s) to Neutrino network</source>
+        <translation><numerusform>%n connexió activa a la xarxa Neutrino</numerusform><numerusform>%n connexions actives a la xarxa Neutrino</numerusform></translation>
     </message>
     <message>
         <location line="+22"/>
@@ -647,8 +647,8 @@ Address: %4
     <message>
         <location line="-23"/>
         <location line="+23"/>
-        <source>URI can not be parsed! This can be caused by an invalid Neutrinocoin address or malformed URI parameters.</source>
-        <translation>la URI no pot ser processada! Això es pot ser causat per una adreça Neutrinocoin invalida o paràmetres URI malformats.</translation>
+        <source>URI can not be parsed! This can be caused by an invalid Neutrino address or malformed URI parameters.</source>
+        <translation>la URI no pot ser processada! Això es pot ser causat per una adreça Neutrino invalida o paràmetres URI malformats.</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -662,8 +662,8 @@ Address: %4
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+111"/>
-        <source>A fatal error occurred. Neutrinocoin can no longer continue safely and will quit.</source>
-        <translation>Ha tingut lloc un error fatal. Neutrinocoin no pot continuar executant-se de manera segura i es tancará.</translation>
+        <source>A fatal error occurred. Neutrino can no longer continue safely and will quit.</source>
+        <translation>Ha tingut lloc un error fatal. Neutrino no pot continuar executant-se de manera segura i es tancará.</translation>
     </message>
 </context>
 <context>
@@ -728,8 +728,8 @@ Address: %4
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid Neutrinocoin address.</source>
-        <translation>L&apos;adreça introduida &quot;%1&quot; no és una adreça Neutrinocoin valida.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Neutrino address.</source>
+        <translation>L&apos;adreça introduida &quot;%1&quot; no és una adreça Neutrino valida.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -747,8 +747,8 @@ Address: %4
     <message>
         <location filename="../guiutil.cpp" line="+424"/>
         <location line="+12"/>
-        <source>Neutrinocoin-Qt</source>
-        <translation>Neutrinocoin-Qt</translation>
+        <source>Neutrino-Qt</source>
+        <translation>Neutrino-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -810,13 +810,13 @@ Address: %4
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start Neutrinocoin after logging in to the system.</source>
-        <translation>Iniciar automàticament Neutrinocoin després de l&apos;inici de sessió del sistema.</translation>
+        <source>Automatically start Neutrino after logging in to the system.</source>
+        <translation>Iniciar automàticament Neutrino després de l&apos;inici de sessió del sistema.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start Neutrinocoin on system login</source>
-        <translation>&amp;Iniciar Neutrinocoin al inici de sessió del sistema.</translation>
+        <source>&amp;Start Neutrino on system login</source>
+        <translation>&amp;Iniciar Neutrino al inici de sessió del sistema.</translation>
     </message>
     <message>
         <location line="+35"/>
@@ -835,8 +835,8 @@ Address: %4
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the Neutrinocoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Obrir el port del client de Neutrinocoin al router de forma automàtica. Això només funciona quan el teu router implementa UPnP i l&apos;opció està activada.</translation>
+        <source>Automatically open the Neutrino client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Obrir el port del client de Neutrino al router de forma automàtica. Això només funciona quan el teu router implementa UPnP i l&apos;opció està activada.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -845,8 +845,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the Neutrinocoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>Connectar a la xarxa Neutrinocoin a través de un SOCKS proxy (per exemple connectant a través de Tor).</translation>
+        <source>Connect to the Neutrino network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <translation>Connectar a la xarxa Neutrino a través de un SOCKS proxy (per exemple connectant a través de Tor).</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -920,8 +920,8 @@ Address: %4
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting Neutrinocoin.</source>
-        <translation>Aquí pots definir el llenguatge de l&apos;aplicatiu. Aquesta configuració tindrà efecte un cop es reiniciï Neutrinocoin.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting Neutrino.</source>
+        <translation>Aquí pots definir el llenguatge de l&apos;aplicatiu. Aquesta configuració tindrà efecte un cop es reiniciï Neutrino.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -935,8 +935,8 @@ Address: %4
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show Neutrinocoin addresses in the transaction list or not.</source>
-        <translation>Mostrar adreces Neutrinocoin als llistats de transaccions o no.</translation>
+        <source>Whether to show Neutrino addresses in the transaction list or not.</source>
+        <translation>Mostrar adreces Neutrino als llistats de transaccions o no.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -987,8 +987,8 @@ Address: %4
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting Neutrinocoin.</source>
-        <translation>Aquesta configuració tindrà efecte un cop es reiniciï Neutrinocoin.</translation>
+        <source>This setting will take effect after restarting Neutrino.</source>
+        <translation>Aquesta configuració tindrà efecte un cop es reiniciï Neutrino.</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1006,8 +1006,8 @@ Address: %4
     <message>
         <location line="+50"/>
         <location line="+166"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Neutrinocoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>La informació mostrada pot no estar al día. El teu moneder es sincronitza automàticament amb la xarxa Neutrinocoin un cop s&apos;ha establert connexió, però aquest proces no s&apos;ha completat encara.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Neutrino network after a connection is established, but this process has not completed yet.</source>
+        <translation>La informació mostrada pot no estar al día. El teu moneder es sincronitza automàticament amb la xarxa Neutrino un cop s&apos;ha establert connexió, però aquest proces no s&apos;ha completat encara.</translation>
     </message>
     <message>
         <location line="-124"/>
@@ -1060,8 +1060,8 @@ Address: %4
     <name>PaymentServer</name>
     <message>
         <location filename="../paymentserver.cpp" line="+107"/>
-        <source>Cannot start neutrinocoin: click-to-pay handler</source>
-        <translation>No es pot iniciar neutrinocoin: manejador clicla-per-pagar</translation>
+        <source>Cannot start neutrino: click-to-pay handler</source>
+        <translation>No es pot iniciar neutrino: manejador clicla-per-pagar</translation>
     </message>
 </context>
 <context>
@@ -1210,8 +1210,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the Neutrinocoin-Qt help message to get a list with possible Neutrinocoin command-line options.</source>
-        <translation>Mostrar el missatge d&apos;ajuda de Neutrinocoin-Qt per a obtenir un llistat de possibles ordres per a la línia d&apos;ordres de Neutrinocoin.</translation>
+        <source>Show the Neutrino-Qt help message to get a list with possible Neutrino command-line options.</source>
+        <translation>Mostrar el missatge d&apos;ajuda de Neutrino-Qt per a obtenir un llistat de possibles ordres per a la línia d&apos;ordres de Neutrino.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1230,13 +1230,13 @@ Address: %4
     </message>
     <message>
         <location line="-104"/>
-        <source>Neutrinocoin - Debug window</source>
-        <translation>Neutrinocoin -Finestra de debug</translation>
+        <source>Neutrino - Debug window</source>
+        <translation>Neutrino -Finestra de debug</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>Neutrinocoin Core</source>
-        <translation>Nucli de Neutrinocoin</translation>
+        <source>Neutrino Core</source>
+        <translation>Nucli de Neutrino</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1245,8 +1245,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the Neutrinocoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Obrir el dietari de debug de Neutrinocoin del directori de dades actual. Aixó pot trigar uns quants segons per a dietàris grossos.</translation>
+        <source>Open the Neutrino debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Obrir el dietari de debug de Neutrino del directori de dades actual. Aixó pot trigar uns quants segons per a dietàris grossos.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1255,8 +1255,8 @@ Address: %4
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-30"/>
-        <source>Welcome to the Neutrinocoin RPC console.</source>
-        <translation>Benvingut a la consola RPC de Neutrinocoin</translation>
+        <source>Welcome to the Neutrino RPC console.</source>
+        <translation>Benvingut a la consola RPC de Neutrino</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1439,8 +1439,8 @@ Address: %4
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a Neutrinocoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Introdueixi una adreça de Neutrinocoin (per exemple Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>Enter a Neutrino address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
+        <translation>Introdueixi una adreça de Neutrino (per exemple Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
     </message>
 </context>
 <context>
@@ -1504,8 +1504,8 @@ Address: %4
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this Neutrinocoin address</source>
-        <translation>Signa el missatge per provar que ets propietari d&apos;aquesta adreça Neutrinocoin</translation>
+        <source>Sign the message to prove you own this Neutrino address</source>
+        <translation>Signa el missatge per provar que ets propietari d&apos;aquesta adreça Neutrino</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1540,8 +1540,8 @@ Address: %4
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified Neutrinocoin address</source>
-        <translation>Verificar el missatge per assegurar-se que ha estat signat amb una adreça Neutrinocoin específica</translation>
+        <source>Verify the message to ensure it was signed with the specified Neutrino address</source>
+        <translation>Verificar el missatge per assegurar-se que ha estat signat amb una adreça Neutrino específica</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1556,8 +1556,8 @@ Address: %4
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a Neutrinocoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Introdueixi una adreça de Neutrinocoin (per exemple Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>Enter a Neutrino address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
+        <translation>Introdueixi una adreça de Neutrino (per exemple Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -1566,8 +1566,8 @@ Address: %4
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter Neutrinocoin signature</source>
-        <translation>Introduïr una clau Neutrinocoin</translation>
+        <source>Enter Neutrino signature</source>
+        <translation>Introduïr una clau Neutrino</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -1640,7 +1640,7 @@ Address: %4
     <name>SplashScreen</name>
     <message>
         <location filename="../splashscreen.cpp" line="+22"/>
-        <source>The Neutrinocoin developers</source>
+        <source>The Neutrino developers</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2178,8 +2178,8 @@ Address: %4
     <name>bitcoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="+94"/>
-        <source>Neutrinocoin version</source>
-        <translation>Versió de Neutrinocoin</translation>
+        <source>Neutrino version</source>
+        <translation>Versió de Neutrino</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -2188,8 +2188,8 @@ Address: %4
     </message>
     <message>
         <location line="-29"/>
-        <source>Send command to -server or neutrinocoind</source>
-        <translation>Enviar comanda a -servidor o neutrinocoind</translation>
+        <source>Send command to -server or neutrinod</source>
+        <translation>Enviar comanda a -servidor o neutrinod</translation>
     </message>
     <message>
         <location line="-23"/>
@@ -2208,13 +2208,13 @@ Address: %4
     </message>
     <message>
         <location line="+24"/>
-        <source>Specify configuration file (default: neutrinocoin.conf)</source>
-        <translation>Especificat arxiu de configuració (per defecte: neutrinocoin.conf)</translation>
+        <source>Specify configuration file (default: neutrino.conf)</source>
+        <translation>Especificat arxiu de configuració (per defecte: neutrino.conf)</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Specify pid file (default: neutrinocoind.pid)</source>
-        <translation>Especificar arxiu pid (per defecte: neutrinocoind.pid)</translation>
+        <source>Specify pid file (default: neutrinod.pid)</source>
+        <translation>Especificar arxiu pid (per defecte: neutrinod.pid)</translation>
     </message>
     <message>
         <location line="-1"/>
@@ -2291,15 +2291,15 @@ Address: %4
         <source>%s, you must set a rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=neutrinocoinrpc
+rpcuser=neutrinorpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;Neutrinocoin Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Neutrino Alert&quot; admin@foo.com
 </source>
-        <translation>%s has de establir una contrasenya RPC a l&apos;arxiu de configuració:\n%s\nEs recomana que useu la següent constrasenya aleatòria:\nrpcuser=neutrinocoinrpc\nrpcpassword=%s\n(no necesiteu recordar aquesta contrsenya)\nEl nom d&apos;usuari i contrasenya NO HAN de ser els mateixos.\nSi l&apos;arxiu no existeix, crea&apos;l amb els permisos d&apos;arxiu de només lectura per al propietari.\nTambé es recomana establir la notificació d&apos;alertes i així seràs notificat de les incidències;\nper exemple: alertnotify=echo %%s | mail -s &quot;Neutrinocoin Alert&quot; admin@foo.com</translation>
+        <translation>%s has de establir una contrasenya RPC a l&apos;arxiu de configuració:\n%s\nEs recomana que useu la següent constrasenya aleatòria:\nrpcuser=neutrinorpc\nrpcpassword=%s\n(no necesiteu recordar aquesta contrsenya)\nEl nom d&apos;usuari i contrasenya NO HAN de ser els mateixos.\nSi l&apos;arxiu no existeix, crea&apos;l amb els permisos d&apos;arxiu de només lectura per al propietari.\nTambé es recomana establir la notificació d&apos;alertes i així seràs notificat de les incidències;\nper exemple: alertnotify=echo %%s | mail -s &quot;Neutrino Alert&quot; admin@foo.com</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2313,8 +2313,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Neutrinocoin Alert&quot; admin
     </message>
     <message>
         <location line="+3"/>
-        <source>Cannot obtain a lock on data directory %s. Neutrinocoin is probably already running.</source>
-        <translation>No es pot bloquejar el directori de dades %s. Probablement Neutrinocoin ja estigui en execució.</translation>
+        <source>Cannot obtain a lock on data directory %s. Neutrino is probably already running.</source>
+        <translation>No es pot bloquejar el directori de dades %s. Probablement Neutrino ja estigui en execució.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2358,8 +2358,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Neutrinocoin Alert&quot; admin
     </message>
     <message>
         <location line="+3"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Neutrinocoin will not work properly.</source>
-        <translation>Advertència: Si us plau comprovi que la data i hora del seu computador siguin correctes! Si el seu rellotge està mal configurat, Neutrinocoin no funcionará de manera apropiada.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Neutrino will not work properly.</source>
+        <translation>Advertència: Si us plau comprovi que la data i hora del seu computador siguin correctes! Si el seu rellotge està mal configurat, Neutrino no funcionará de manera apropiada.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2608,8 +2608,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Neutrinocoin Alert&quot; admin
     </message>
     <message>
         <location line="+5"/>
-        <source>SSL options: (see the Neutrinocoin Wiki for SSL setup instructions)</source>
-        <translation>Opcions SSL: (veure la Wiki de Neutrinocoin per a instruccions de configuració SSL)</translation>
+        <source>SSL options: (see the Neutrino Wiki for SSL setup instructions)</source>
+        <translation>Opcions SSL: (veure la Wiki de Neutrino per a instruccions de configuració SSL)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2798,13 +2798,13 @@ for example: alertnotify=echo %%s | mail -s &quot;Neutrinocoin Alert&quot; admin
     </message>
     <message>
         <location line="+1"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of Neutrinocoin</source>
-        <translation>Error carregant wallet.dat: El moneder requereix una versió de Neutrinocoin més moderna</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Neutrino</source>
+        <translation>Error carregant wallet.dat: El moneder requereix una versió de Neutrino més moderna</translation>
     </message>
     <message>
         <location line="+93"/>
-        <source>Wallet needed to be rewritten: restart Neutrinocoin to complete</source>
-        <translation>El moneder necesita ser re-escrit: re-inicia Neutrinocoin per a completar la tasca</translation>
+        <source>Wallet needed to be rewritten: restart Neutrino to complete</source>
+        <translation>El moneder necesita ser re-escrit: re-inicia Neutrino per a completar la tasca</translation>
     </message>
     <message>
         <location line="-95"/>
@@ -2863,8 +2863,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Neutrinocoin Alert&quot; admin
     </message>
     <message>
         <location line="-25"/>
-        <source>Unable to bind to %s on this computer. Neutrinocoin is probably already running.</source>
-        <translation>Impossible d&apos;unir %s en aquest ordinador. Probablement Neutrinocoin ja estigui en execució.</translation>
+        <source>Unable to bind to %s on this computer. Neutrino is probably already running.</source>
+        <translation>Impossible d&apos;unir %s en aquest ordinador. Probablement Neutrino ja estigui en execució.</translation>
     </message>
     <message>
         <location line="+64"/>

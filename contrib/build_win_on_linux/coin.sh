@@ -34,10 +34,10 @@ echo "
  IDL           = midl
 " | sed s2"STAGING_HERE"2"$(echo $STAGING)"2g | patch -l
 make $MAKEOPTS
-$HOST-strip release/*coin-qt.exe
+$HOST-strip release/*-qt.exe
 rm -rf $OUTDIR/client
 mkdir $OUTDIR/client
-cp release/*coin-qt.exe $OUTDIR/client
+cp release/*-qt.exe $OUTDIR/client
 
 # coind
 cd src
@@ -71,15 +71,15 @@ cp ../../src/*.exe .
 makensis ../share/setup.nsi
 rm -rf $OUTDIR/setup
 mkdir $OUTDIR/setup
-cp ../share/neutrinocoin-*-win32-setup.exe $OUTDIR/setup/
+cp ../share/neutrino-*-win32-setup.exe $OUTDIR/setup/
 
 # results
 cd $OUTDIR
-rm -rf neutrinocoin-dist.zip
-zip -r neutrinocoin-dist.zip setup client daemon
+rm -rf neutrino-dist.zip
+zip -r neutrino-dist.zip setup client daemon
 
 echo -e "\n\n"
-echo "Results are in $OUTDIR/neutrinocoin-dist.zip"
+echo "Results are in $OUTDIR/neutrino-dist.zip"
 echo -e "\n"
 
 

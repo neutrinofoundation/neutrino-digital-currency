@@ -15,9 +15,9 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleExecutable</key>
-	<string>Neutrinocoin-Qt</string>
+	<string>Neutrino-Qt</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.neutrinocoin.Neutrinocoin-Qt</string>
+	<string>org.neutrinocoin.Neutrino-Qt</string>
         <key>CFBundleURLTypes</key>
         <array>
           <dict>
@@ -27,7 +27,7 @@
             <string>org.neutrinocoin.NeutrinocoinPayment</string>
             <key>CFBundleURLSchemes</key>
             <array>
-              <string>neutrinocoin</string>
+              <string>neutrino</string>
             </array>
           </dict>
         </array>

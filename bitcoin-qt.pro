@@ -1,6 +1,6 @@
 TEMPLATE = app
-TARGET = neutrinocoin-qt
-macx:TARGET = "Neutrinocoin-Qt"
+TARGET = neutrino-qt
+macx:TARGET = "Neutrino-Qt"
 VERSION = 0.0.3.1
 INCLUDEPATH += src src/json src/qt src/tor
 QT += core gui network
@@ -398,7 +398,7 @@ SOURCES += src/qt/test/test_main.cpp \
 HEADERS += src/qt/test/uritests.h
 DEPENDPATH += src/qt/test
 QT += testlib
-TARGET = neutrinocoin-qt_test
+TARGET = neutrino-qt_test
 DEFINES += BITCOIN_QT_TEST
   macx: CONFIG -= app_bundle
 }
