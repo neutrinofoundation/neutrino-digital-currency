@@ -1,6 +1,6 @@
 TEMPLATE = app
-TARGET = neutrinocoin-qt
-macx:TARGET = "Neutrinocoin-Qt"
+TARGET = neutrino-qt
+macx:TARGET = "Neutrino-Qt"
 VERSION = 0.0.3.1
 INCLUDEPATH += src src/json src/qt src/tor
 QT += core gui network
@@ -46,7 +46,7 @@ contains(RELEASE, 1) {
     # This can be enabled for Windows, when we switch to MinGW >= 4.4.x.
 }
 # for extra security (see: https://wiki.debian.org/Hardening): this flag is GCC compiler-specific
-QMAKE_CXXFLAGS *= -D_FORTIFY_SOURCE=2
+QMAKE_CXXFLAGS += -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2
 # for extra security on Windows: enable ASLR and DEP via GCC linker flags
 win32:QMAKE_LFLAGS *= -Wl,--dynamicbase -Wl,--nxcompat
 # on Windows: enable GCC large address aware linker flag
@@ -398,7 +398,7 @@ SOURCES += src/qt/test/test_main.cpp \
 HEADERS += src/qt/test/uritests.h
 DEPENDPATH += src/qt/test
 QT += testlib
-TARGET = neutrinocoin-qt_test
+TARGET = neutrino-qt_test
 DEFINES += BITCOIN_QT_TEST
   macx: CONFIG -= app_bundle
 }

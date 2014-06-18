@@ -1,3 +1,7 @@
+// Copyright (c) 2011-2013 The Bitcoin developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "bitcoinunits.h"
 
 #include <QStringList>
@@ -45,9 +49,9 @@ QString BitcoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("Neutrinocoins");
-    case mBTC: return QString("Milli-Neutrinocoins (1 / 1,000)");
-    case uBTC: return QString("Micro-Neutrinocoins (1 / 1,000,000)");
+    case BTC: return QString("Neutrinos");
+    case mBTC: return QString("Milli-Neutrinos (1 / 1,000)");
+    case uBTC: return QString("Micro-Neutrinos (1 / 1,000,000)");
     default: return QString("???");
     }
 }
