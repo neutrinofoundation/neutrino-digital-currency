@@ -5,6 +5,7 @@
 
 #include "neutrinocoin.h"
 #include "util.h"
+#include "protocol.h"
 
 #include <boost/filesystem.hpp>
 #include <boost/thread/thread.hpp>
@@ -38,6 +39,10 @@ int check_interrupted(
 ) {
     return boost::this_thread::interruption_requested(
     ) ? 1 : 0;
+}
+
+int get_port() {
+    return GetDefaultPort();
 }
 
 static boost::mutex initializing;

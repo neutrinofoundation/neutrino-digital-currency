@@ -22,6 +22,8 @@ extern "C" {
     int check_interrupted(
     );
 
+    int get_port();
+
     void set_initialized(
     );
 
