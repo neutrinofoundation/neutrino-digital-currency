@@ -1096,7 +1096,13 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
         } else if ( ( ( quarter - 1 ) % 4 ) + 1 == 2 ) {
             nSubsidy = nSubsidy * 1011 / 1000; // thereafter, subsidy increases by 1.1% each year
         }
+
+        // fixes issue #4
+        if (nHeight >= 120000) {
+            quarter++;
+        }
     }
+
     return nSubsidy + nFees;
 }
 
