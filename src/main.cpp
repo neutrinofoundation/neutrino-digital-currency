@@ -1196,13 +1196,6 @@ unsigned int static NeutrinoGravityWave_V1(const CBlockIndex* pindexLast, const 
     return bnNew.GetCompact();
 }
 
-unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock)
-{
-      if (fTestNet) { return NeutrinoGravityWave_V1(pindexLast, pblock); }
-      if (pindexLast->nHeight+1 <= 120000) { return GetNextWorkRequired_V1(pindexLast, pblock); }
-      return NeutrinoGravityWave_V1(pindexLast, pblock);
-}
-
 unsigned int static GetNextWorkRequired_V1(const CBlockIndex* pindexLast, const CBlockHeader *pblock)
 {
     unsigned int nProofOfWorkLimit = bnProofOfWorkLimit.GetCompact();
@@ -1274,6 +1267,13 @@ unsigned int static GetNextWorkRequired_V1(const CBlockIndex* pindexLast, const 
     printf("After:  %08x  %s %15f\n\n", bnNew.GetCompact(), bnNew.getuint256().ToString().c_str(), GetQuickDifficulty(bnNew.GetCompact()));
 
     return bnNew.GetCompact();
+}
+
+unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock)
+{
+      if (fTestNet) { return NeutrinoGravityWave_V1(pindexLast, pblock); }
+      if (pindexLast->nHeight+1 <= 120000) { return GetNextWorkRequired_V1(pindexLast, pblock); }
+      return NeutrinoGravityWave_V1(pindexLast, pblock);
 }
 
 double GetQuickDifficulty(const unsigned int nBits)
