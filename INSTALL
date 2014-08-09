@@ -1,9 +1,9 @@
-Building Neutrinocoin
+Building Neutrino
 
-See doc/readme-qt.rst for instructions on building Neutrinocoin-Qt,
+See doc/readme-qt.rst for instructions on building Neutrino-Qt,
 the intended-for-end-users, nice-graphical-interface, reference
-implementation of Neutrinocoin.
+implementation of Neutrino.
 
 See doc/build-*.txt for instructions on building neutrinocoind,
 the intended-for-services, no-graphical-interface, reference
-implementation of Neutrinocoin.
+implementation of Neutrino.

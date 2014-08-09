@@ -1,4 +1,4 @@
-/* Copyright (c) 2014, Neutrinocoin Developers */
+/* Copyright (c) 2014, Neutrino Foundation Inc */
 /* See LICENSE for licensing information */
 
 /**
