@@ -132,7 +132,7 @@ OBJS= \
     obj/tor_util.o \
     obj/transports.o \
     obj/util_codedigest.o \
-    obj/neutrinocoin.o \
+    obj/neutrino.o \
     leveldb/libleveldb.a \
     obj/alert.o \
     obj/version.o \
@@ -172,7 +172,7 @@ OBJS_SSE2= obj/scrypt-sse2.o
 OBJS += $(OBJS_SSE2)
 endif
 
-all: neutrinocoind.exe
+all: neutrinod.exe
 
 DEFS += -I"$(CURDIR)/leveldb/include"
 DEFS += -I"$(CURDIR)/leveldb/helpers"
@@ -193,10 +193,10 @@ obj/%.o: %.cpp $(HEADERS)
 obj/%.o: tor/%.c 
 	$(CC) -c $(xCXXFLAGS) -o $@ $<
 
-obj/%.o: tor/neutrinocoin.cpp
+obj/%.o: tor/neutrino.cpp
 	$(CXX) -c $(xCXXFLAGS) -o $@ $<
 
-neutrinocoind.exe: $(OBJS:obj/%=obj/%)
+neutrinod.exe: $(OBJS:obj/%=obj/%)
 	$(CXX) $(xCXXFLAGS) $(xLDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
@@ -204,15 +204,15 @@ TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
 obj-test/%.o: test/%.cpp $(HEADERS)
 	$(CXX) -c $(TESTDEFS) $(xCXXFLAGS) -o $@ $<
 
-test_neutrinocoin.exe: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
+test_neutrino.exe: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
 	$(CXX) $(xCXXFLAGS) $(xLDFLAGS) -o $@ $(LIBPATHS) $^ -lboost_unit_test_framework-mt-s $(LIBS)
 
 
 clean:
 	-rm -f obj/*.o
-	-rm -f neutrinocoind.exe
+	-rm -f neutrinod.exe
 	-rm -f obj-test/*.o
-	-rm -f test_neutrinocoin.exe
+	-rm -f test_neutrino.exe
 	-rm -f obj/build.h
 	cd leveldb && TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) clean && cd ..
 

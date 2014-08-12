@@ -187,7 +187,7 @@ OBJS= \
     obj/tor_util.o \
     obj/transports.o \
     obj/util_codedigest.o \
-    obj/neutrinocoin.o \
+    obj/neutrino.o \
     leveldb/libleveldb.a \
     obj/alert.o \
     obj/version.o \
@@ -227,10 +227,10 @@ OBJS_SSE2= obj/scrypt-sse2.o
 OBJS += $(OBJS_SSE2)
 endif
 
-all: neutrinocoind
+all: neutrinod
 
-test check: test_neutrinocoin FORCE
-	./test_neutrinocoin
+test check: test_neutrino FORCE
+	./test_neutrino
 
 #
 # LevelDB support
@@ -273,14 +273,14 @@ obj/%.o: tor/%.c
 		-e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	rm -f $(@:%.o=%.d)
 
-obj/%.o: tor/neutrinocoin.cpp
+obj/%.o: tor/neutrino.cpp
 	$(CXX) -c $(xCXXFLAGS) -MMD -MF $(@:%.o=%.d) -o $@ $<
 	@cp $(@:%.o=%.d) $(@:%.o=%.P); \
 	sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' \
 		-e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	rm -f $(@:%.o=%.d)
 
-neutrinocoind: $(OBJS:obj/%=obj/%)
+neutrinod: $(OBJS:obj/%=obj/%)
 	$(LINK) $(xCXXFLAGS) -o $@ $^ $(xLDFLAGS) $(LIBS)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
@@ -292,11 +292,11 @@ obj-test/%.o: test/%.cpp
 	      -e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	  rm -f $(@:%.o=%.d)
 
-test_neutrinocoin: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
+test_neutrino: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
 	$(LINK) $(xCXXFLAGS) -o $@ $(LIBPATHS) $^ $(TESTLIBS) $(xLDFLAGS) $(LIBS)
 
 clean:
-	-rm -f neutrinocoind test_neutrinocoin
+	-rm -f neutrinod test_neutrino
 	-rm -f obj/*.o
 	-rm -f obj-test/*.o
 	-rm -f obj/*.P

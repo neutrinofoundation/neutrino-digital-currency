@@ -1,4 +1,4 @@
-Neutrinocoin 0.8.x BETA
+Neutrino 0.8.x BETA
 ====================
 
 Copyright (c) 2009-2013 Bitcoin Developers
@@ -13,7 +13,7 @@ cryptographic software written by Eric Young ([eay@cryptsoft.com](mailto:eay@cry
 
 Intro
 ---------------------
-Neutrinocoin is a free open source peer-to-peer electronic cash system that is
+Neutrino is a free open source peer-to-peer electronic cash system that is
 completely decentralized, without the need for a central server or trusted
 parties.  Users hold the crypto keys to their own money and transact directly
 with each other, with the help of a P2P network to check for double-spending.
@@ -21,17 +21,17 @@ with each other, with the help of a P2P network to check for double-spending.
 
 Setup
 ---------------------
-You need the Qt4 run-time libraries to run Neutrinocoin-Qt. On Debian or Ubuntu:
+You need the Qt4 run-time libraries to run Neutrino-Qt. On Debian or Ubuntu:
 	`sudo apt-get install libqtgui4`
 
 Unpack the files into a directory and run:
 
-- bin/32/neutrinocoin-qt (GUI, 32-bit)
-- bin/32/neutrinocoind (headless, 32-bit)
-- bin/64/neutrinocoin-qt (GUI, 64-bit)
-- bin/64/neutrinocoind (headless, 64-bit)
+- bin/32/neutrino-qt (GUI, 32-bit)
+- bin/32/neutrinod (headless, 32-bit)
+- bin/64/neutrino-qt (GUI, 64-bit)
+- bin/64/neutrinod (headless, 64-bit)
 
-See the documentation at the [Neutrinocoin Wiki](http://neutrinocoin.info)
+See the documentation at the [Neutrino Wiki](http://neutrino.info)
 for help and more information.
 
 

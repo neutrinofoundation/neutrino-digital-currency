@@ -1,7 +1,7 @@
 src/*.exe
-src/neutrinocoin
-src/neutrinocoind
-src/test_neutrinocoin
+src/neutrino
+src/neutrinod
+src/test_neutrino
 .*.swp
 *.*~*
 *.bak
@@ -9,19 +9,18 @@ src/test_neutrinocoin
 *.orig
 *.o
 *.patch
-.neutrinocoin
+.neutrinocoi
 
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-neutrinocoin-qt
+neutrino-qt
 Neutrinocoin-Qt.app
 neutrino-qt
 Neutrino-Qt.app
 
 # Unit-tests
 Makefile.test
-neutrinocoin-qt_test
 neutrino-qt_test
 
 # Resources cpp

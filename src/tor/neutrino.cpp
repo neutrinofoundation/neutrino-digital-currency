@@ -3,7 +3,7 @@
    Copyright (c) 2013-2014 The Neutrino Foundation Inc */
 /* See LICENSE for licensing information */
 
-#include "neutrinocoin.h"
+#include "neutrino.h"
 #include "util.h"
 #include "protocol.h"
 
@@ -13,7 +13,7 @@
 #include <string>
 #include <cstring>
 
-char const* neutrinocoin_tor_data_directory(
+char const* neutrino_tor_data_directory(
 ) {
     static std::string const retrieved = (
         GetDefaultDataDir(
@@ -24,7 +24,7 @@ char const* neutrinocoin_tor_data_directory(
     );
 }
 
-char const* neutrinocoin_service_directory(
+char const* neutrino_service_directory(
 ) {
     static std::string const retrieved = (
         GetDefaultDataDir(

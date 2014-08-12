@@ -6,7 +6,7 @@ Release Process
 ###update (commit) version in sources
 
 
-	neutrinocoin-qt.pro
+	neutrino-qt.pro
 	contrib/verifysfbinaries/verify.sh
 	doc/README*
 	share/setup.nsi
@@ -24,7 +24,7 @@ Release Process
 
 ##perform gitian builds
 
- From a directory containing the neutrinocoin source, gitian-builder and gitian.sigs
+ From a directory containing the neutrino source, gitian-builder and gitian.sigs
   
 	export SIGNER=(your gitian key, ie bluematt, sipa, etc)
 	export VERSION=0.8.0
@@ -42,54 +42,54 @@ Release Process
 	wget 'http://downloads.sourceforge.net/project/boost/boost/1.50.0/boost_1_50_0.tar.bz2'
 	wget 'http://releases.qt-project.org/qt4/source/qt-everywhere-opensource-src-4.8.3.tar.gz'
 	cd ..
-	./bin/gbuild ../neutrinocoin/contrib/gitian-descriptors/boost-win32.yml
+	./bin/gbuild ../neutrino/contrib/gitian-descriptors/boost-win32.yml
 	mv build/out/boost-win32-1.50.0-gitian2.zip inputs/
-	./bin/gbuild ../neutrinocoin/contrib/gitian-descriptors/qt-win32.yml
+	./bin/gbuild ../neutrino/contrib/gitian-descriptors/qt-win32.yml
 	mv build/out/qt-win32-4.8.3-gitian-r1.zip inputs/
-	./bin/gbuild ../neutrinocoin/contrib/gitian-descriptors/deps-win32.yml
-	mv build/out/neutrinocoin-deps-0.0.5.zip inputs/
+	./bin/gbuild ../neutrino/contrib/gitian-descriptors/deps-win32.yml
+	mv build/out/neutrino-deps-0.0.5.zip inputs/
 
- Build neutrinocoind and neutrinocoin-qt on Linux32, Linux64, and Win32:
+ Build neutrinod and neutrino-qt on Linux32, Linux64, and Win32:
   
-	./bin/gbuild --commit neutrinocoin=v${VERSION} ../neutrinocoin/contrib/gitian-descriptors/gitian.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION} --destination ../gitian.sigs/ ../neutrinocoin/contrib/gitian-descriptors/gitian.yml
+	./bin/gbuild --commit neutrino=v${VERSION} ../neutrino/contrib/gitian-descriptors/gitian.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION} --destination ../gitian.sigs/ ../neutrino/contrib/gitian-descriptors/gitian.yml
 	pushd build/out
-	zip -r neutrinocoin-${VERSION}-linux-gitian.zip *
-	mv neutrinocoin-${VERSION}-linux-gitian.zip ../../
+	zip -r neutrino-${VERSION}-linux-gitian.zip *
+	mv neutrino-${VERSION}-linux-gitian.zip ../../
 	popd
-	./bin/gbuild --commit neutrinocoin=v${VERSION} ../neutrinocoin/contrib/gitian-descriptors/gitian-win32.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-win32 --destination ../gitian.sigs/ ../neutrinocoin/contrib/gitian-descriptors/gitian-win32.yml
+	./bin/gbuild --commit neutrino=v${VERSION} ../neutrino/contrib/gitian-descriptors/gitian-win32.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-win32 --destination ../gitian.sigs/ ../neutrino/contrib/gitian-descriptors/gitian-win32.yml
 	pushd build/out
-	zip -r neutrinocoin-${VERSION}-win32-gitian.zip *
-	mv neutrinocoin-${VERSION}-win32-gitian.zip ../../
+	zip -r neutrino-${VERSION}-win32-gitian.zip *
+	mv neutrino-${VERSION}-win32-gitian.zip ../../
 	popd
 
   Build output expected:
 
-  1. linux 32-bit and 64-bit binaries + source (neutrinocoin-${VERSION}-linux-gitian.zip)
-  2. windows 32-bit binary, installer + source (neutrinocoin-${VERSION}-win32-gitian.zip)
+  1. linux 32-bit and 64-bit binaries + source (neutrino-${VERSION}-linux-gitian.zip)
+  2. windows 32-bit binary, installer + source (neutrino-${VERSION}-win32-gitian.zip)
   3. Gitian signatures (in gitian.sigs/${VERSION}[-win32]/(your gitian key)/
 
 repackage gitian builds for release as stand-alone zip/tar/installer exe
 
 **Linux .tar.gz:**
 
-	unzip neutrinocoin-${VERSION}-linux-gitian.zip -d neutrinocoin-${VERSION}-linux
-	tar czvf neutrinocoin-${VERSION}-linux.tar.gz neutrinocoin-${VERSION}-linux
-	rm -rf neutrinocoin-${VERSION}-linux
+	unzip neutrino-${VERSION}-linux-gitian.zip -d neutrino-${VERSION}-linux
+	tar czvf neutrino-${VERSION}-linux.tar.gz neutrino-${VERSION}-linux
+	rm -rf neutrino-${VERSION}-linux
 
 **Windows .zip and setup.exe:**
 
-	unzip neutrinocoin-${VERSION}-win32-gitian.zip -d neutrinocoin-${VERSION}-win32
-	mv neutrinocoin-${VERSION}-win32/neutrinocoin-*-setup.exe .
-	zip -r neutrinocoin-${VERSION}-win32.zip bitcoin-${VERSION}-win32
-	rm -rf neutrinocoin-${VERSION}-win32
+	unzip neutrino-${VERSION}-win32-gitian.zip -d neutrino-${VERSION}-win32
+	mv neutrino-${VERSION}-win32/neutrino-*-setup.exe .
+	zip -r neutrino-${VERSION}-win32.zip bitcoin-${VERSION}-win32
+	rm -rf neutrino-${VERSION}-win32
 
 **Perform Mac build:**
 
   OSX binaries are created by Gavin Andresen on a 32-bit, OSX 10.6 machine.
 
-	qmake RELEASE=1 USE_UPNP=1 USE_QRCODE=1 neutrinocoin-qt.pro
+	qmake RELEASE=1 USE_UPNP=1 USE_QRCODE=1 neutrino-qt.pro
 	make
 	export QTDIR=/opt/local/share/qt4  # needed to find translations/qt_*.qm files
 	T=$(contrib/qt_translations.py $QTDIR/translations src/qt/locale)
@@ -107,14 +107,14 @@ repackage gitian builds for release as stand-alone zip/tar/installer exe
 
 * create SHA256SUMS for builds, and PGP-sign it
 
-* update neutrinocoin.org version
+* update neutrino.org version
   make sure all OS download links go to the right versions
 
 * update forum version
 
 * update wiki download links
 
-* update wiki changelog: [https://en.neutrinocoin.it/wiki/Changelog](https://en.bitcoin.it/wiki/Changelog)
+* update wiki changelog: [https://en.neutrino.it/wiki/Changelog](https://en.bitcoin.it/wiki/Changelog)
 
 Commit your signature to gitian.sigs:
 
@@ -129,32 +129,32 @@ Commit your signature to gitian.sigs:
 
 ### After 3 or more people have gitian-built, repackage gitian-signed zips:
 
-From a directory containing neutrinocoin source, gitian.sigs and gitian zips
+From a directory containing neutrino source, gitian.sigs and gitian zips
 
 	export VERSION=0.5.1
-	mkdir neutrinocoin-${VERSION}-linux-gitian
-	pushd neutrinocoin-${VERSION}-linux-gitian
-	unzip ../neutrinocoin-${VERSION}-linux-gitian.zip
+	mkdir neutrino-${VERSION}-linux-gitian
+	pushd neutrino-${VERSION}-linux-gitian
+	unzip ../neutrino-${VERSION}-linux-gitian.zip
 	mkdir gitian
-	cp ../neutrinocoin/contrib/gitian-downloader/*.pgp ./gitian/
+	cp ../neutrino/contrib/gitian-downloader/*.pgp ./gitian/
 	for signer in $(ls ../gitian.sigs/${VERSION}/); do
-	 cp ../gitian.sigs/${VERSION}/${signer}/neutrinocoin-build.assert ./gitian/${signer}-build.assert
-	 cp ../gitian.sigs/${VERSION}/${signer}/neutrinocoin-build.assert.sig ./gitian/${signer}-build.assert.sig
+	 cp ../gitian.sigs/${VERSION}/${signer}/neutrino-build.assert ./gitian/${signer}-build.assert
+	 cp ../gitian.sigs/${VERSION}/${signer}/neutrino-build.assert.sig ./gitian/${signer}-build.assert.sig
 	done
-	zip -r neutrinocoin-${VERSION}-linux-gitian.zip *
-	cp neutrinocoin-${VERSION}-linux-gitian.zip ../
+	zip -r neutrino-${VERSION}-linux-gitian.zip *
+	cp neutrino-${VERSION}-linux-gitian.zip ../
 	popd
-	mkdir neutrinocoin-${VERSION}-win32-gitian
-	pushd neutrinocoin-${VERSION}-win32-gitian
-	unzip ../neutrinocoin-${VERSION}-win32-gitian.zip
+	mkdir neutrino-${VERSION}-win32-gitian
+	pushd neutrino-${VERSION}-win32-gitian
+	unzip ../neutrino-${VERSION}-win32-gitian.zip
 	mkdir gitian
-	cp ../neutrinocoin/contrib/gitian-downloader/*.pgp ./gitian/
+	cp ../neutrino/contrib/gitian-downloader/*.pgp ./gitian/
 	for signer in $(ls ../gitian.sigs/${VERSION}-win32/); do
-	 cp ../gitian.sigs/${VERSION}-win32/${signer}/neutrinocoin-build.assert ./gitian/${signer}-build.assert
-	 cp ../gitian.sigs/${VERSION}-win32/${signer}/neutrinocoin-build.assert.sig ./gitian/${signer}-build.assert.sig
+	 cp ../gitian.sigs/${VERSION}-win32/${signer}/neutrino-build.assert ./gitian/${signer}-build.assert
+	 cp ../gitian.sigs/${VERSION}-win32/${signer}/neutrino-build.assert.sig ./gitian/${signer}-build.assert.sig
 	done
-	zip -r neutrinocoin-${VERSION}-win32-gitian.zip *
-	cp neutrinocoin-${VERSION}-win32-gitian.zip ../
+	zip -r neutrino-${VERSION}-win32-gitian.zip *
+	cp neutrino-${VERSION}-win32-gitian.zip ../
 	popd
 
 - Upload gitian zips to SourceForge

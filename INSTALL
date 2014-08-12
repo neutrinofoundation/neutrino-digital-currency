@@ -4,6 +4,6 @@ See doc/readme-qt.rst for instructions on building Neutrino-Qt,
 the intended-for-end-users, nice-graphical-interface, reference
 implementation of Neutrino.
 
-See doc/build-*.txt for instructions on building neutrinocoind,
+See doc/build-*.txt for instructions on building neutrinod,
 the intended-for-services, no-graphical-interface, reference
 implementation of Neutrino.

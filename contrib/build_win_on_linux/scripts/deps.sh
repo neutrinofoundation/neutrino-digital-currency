@@ -79,7 +79,8 @@ make install
 cd ..
 
 # libevent
-wget https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz
+#wget https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz
+wget http://pkgs.fedoraproject.org/repo/pkgs/libevent/libevent-2.0.21-stable.tar.gz/b2405cc9ebf264aa47ff615d9de527a2/libevent-2.0.21-stable.tar.gz
 tar xf libevent-2.0.21-stable.tar.gz
 cd libevent-2.0.21-stable
 ./configure --prefix=$INSTALLPREFIX --host=$HOST --enable-static

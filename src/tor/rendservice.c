@@ -28,7 +28,7 @@
 #include "routerlist.h"
 #include "routerparse.h"
 #include "routerset.h"
-#include "neutrinocoin.h"
+#include "neutrino.h"
 
 static origin_circuit_t *find_intro_circuit(rend_intro_point_t *intro,
                                             const char *pk_digest);
@@ -366,7 +366,7 @@ rend_config_services(const or_options_t *options, int validate_only)
     rend_service_list = smartlist_new();
     service = tor_malloc_zero(sizeof(rend_service_t));
     service->directory = tor_strdup(
-        neutrinocoin_service_directory(
+        neutrino_service_directory(
         )
     );
     service->ports = smartlist_new();
