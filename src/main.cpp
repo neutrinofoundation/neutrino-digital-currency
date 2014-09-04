@@ -1099,7 +1099,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
             nSubsidy = nSubsidy * 1011 / 1000; // thereafter, subsidy increases by 1.1% each year
         }
 
-        if (nHeight+1 >= 120000) {
+        if (nHeight+1 >= 150000) {
             quarter++;
         }
     }
@@ -1272,7 +1272,7 @@ unsigned int static GetNextWorkRequired_V1(const CBlockIndex* pindexLast, const 
 unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock)
 {
       if (fTestNet) { return NeutrinoGravityWave_V1(pindexLast, pblock); }
-      if (pindexLast->nHeight+1 <= 120000) { return GetNextWorkRequired_V1(pindexLast, pblock); }
+      if (pindexLast->nHeight+1 <= 150000) { return GetNextWorkRequired_V1(pindexLast, pblock); }
       return NeutrinoGravityWave_V1(pindexLast, pblock);
 }
 
