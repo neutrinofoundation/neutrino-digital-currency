@@ -55,6 +55,7 @@ bool fTxIndex = false;
 unsigned int nCoinCacheSize = 5000;
 
 const int SOFTFORK1 = 150000;
+const int SOFTFORKTIME1 = 1410825600; // Tue, 16 Sep 2014 00:00:00 GMT
 
 /** Fees smaller than this (in satoshi) are considered zero fee (for transaction creation) */
 int64 CTransaction::nMinTxFee = 100000;
@@ -2272,6 +2273,19 @@ bool CBlock::AcceptBlock(CValidationState &state, CDiskBlockPos *dbp)
             return state.DoS(10, error("AcceptBlock() : prev block not found"));
         pindexPrev = (*mi).second;
         nHeight = pindexPrev->nHeight+1;
+        
+        /* Don't accept v1 blocks after this point */
+        if(nTime > SOFTFORKTIME1) {
+            CScript expect = CScript() << nHeight;
+            if(!std::equal(expect.begin(), expect.end(), vtx[0].vin[0].scriptSig.begin()))
+                return(state.DoS(100, error("AcceptBlock() : incorrect block height in coin base")));
+        }
+
+        /* Don't accept blocks with bogus nVersion numbers after this point */
+        if(nHeight >= SOFTFORK1) {
+            if(nVersion != 2)
+                return(state.DoS(100, error("AcceptBlock() : incorrect block version")));
+        }
 
         // Check proof of work
         if (nBits != GetNextWorkRequired(pindexPrev, this))
