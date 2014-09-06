@@ -54,6 +54,8 @@ bool fBenchmark = false;
 bool fTxIndex = false;
 unsigned int nCoinCacheSize = 5000;
 
+const int SOFTFORK1 = 150000;
+
 /** Fees smaller than this (in satoshi) are considered zero fee (for transaction creation) */
 int64 CTransaction::nMinTxFee = 100000;
 /** Fees smaller than this (in satoshi) are considered zero fee (for relaying) */
@@ -2278,6 +2280,16 @@ bool CBlock::AcceptBlock(CValidationState &state, CDiskBlockPos *dbp)
         // Check timestamp against prev
         if (GetBlockTime() <= pindexPrev->GetMedianTimePast())
             return state.Invalid(error("AcceptBlock() : block's timestamp is too early"));
+        
+        // Prevent blocks from too far in the future
+        if (GetBlockTime() > GetAdjustedTime() + 15 * 60) {
+            return error("AcceptBlock() : block's timestamp too far in the future");
+        }
+
+        // Check timestamp is not too far in the past
+        if ((nHeight >= SOFTFORK1) && (GetBlockTime() <= pindexPrev->GetBlockTime() - 15 * 60)) {
+            return error("AcceptBlock() : block's timestamp is too early compare to last block");
+        }
 
         // Check that all transactions are finalized
         BOOST_FOREACH(const CTransaction& tx, vtx)
