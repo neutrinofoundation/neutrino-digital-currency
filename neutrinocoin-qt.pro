@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = neutrino-qt
 macx:TARGET = "Neutrino-Qt"
-VERSION = 0.0.3.1
+VERSION = 0.4.0.0
 INCLUDEPATH += src src/json src/qt src/tor
 QT += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
