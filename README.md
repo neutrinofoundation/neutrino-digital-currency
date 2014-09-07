@@ -1,7 +1,7 @@
 Neutrino integration/staging tree
 ================================
 
-http://www.neutrinocoin.org
+http://www.neutrinodigitalcurrency.com
 
 * Copyright (c) 2009-2013 Bitcoin Developers
 * Copyright (c) 2011-2013 Litecoin Developers
@@ -18,7 +18,7 @@ Neutrino is a fork of Litecoin that provides extra privacy features.
  - 210 million coins created in the first 3 months
  - Coin supply increases 1.1% annually thereafter through a dynamic block reward subsidy
 
-For more information, see http://www.neutrinocoin.org.
+For more information, see http://www.neutrinodigitalcurrency.com.
 
 License
 -------
