@@ -55,7 +55,7 @@ bool fBenchmark = false;
 bool fTxIndex = false;
 unsigned int nCoinCacheSize = 5000;
 
-const int SOFTFORK1 = 150000;
+const int SOFTFORK1 = 160000;
 const int SOFTFORKTIME1 = 1410825600; // Tue, 16 Sep 2014 00:00:00 GMT
 
 /** Fees smaller than this (in satoshi) are considered zero fee (for transaction creation) */
@@ -1103,7 +1103,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
             nSubsidy = nSubsidy * 1011 / 1000; // thereafter, subsidy increases by 1.1% each year
         }
 
-        if (nHeight+1 >= 150000) {
+        if (nHeight+1 >= SOFTFORK1) {
             quarter++;
         }
     }
@@ -1276,7 +1276,7 @@ unsigned int static GetNextWorkRequired_V1(const CBlockIndex* pindexLast, const 
 unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock)
 {
       if (fTestNet) { return NeutrinoGravityWave_V1(pindexLast, pblock); }
-      if (pindexLast->nHeight+1 <= 150000) { return GetNextWorkRequired_V1(pindexLast, pblock); }
+      if (pindexLast->nHeight+1 <= SOFTFORK1) { return GetNextWorkRequired_V1(pindexLast, pblock); }
       return NeutrinoGravityWave_V1(pindexLast, pblock);
 }
 
